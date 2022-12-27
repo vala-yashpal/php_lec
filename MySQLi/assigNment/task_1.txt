@@ -46,7 +46,9 @@
 			(4,1,"2013-01-01",4500),
 			(5,2,"2013-01-01",3500);
 -------------------------------------------------------------------------------------------------------
-	//QUESTION//
+
+					//QUESTION//
+
 
 a) Get First_Name from employee table using alias name “Employee Name”.
 -> SELECT EmployeeName.FIRST_NAME FROM employee EmployeeName;
@@ -76,6 +78,31 @@ h) Select first_name, incentive amount from employee and incentives table for th
 -> SELECT e.FIRST_NAME,i.incentive_amt FROM employee e INNER JOIN INCENTIVES i ON e.EM_ID=i.employee_ref_Id AND i.incentive_amt >3000; 
 
 i) Select 2nd Highest salary from employee table.
-->     
+-> SELECT * from employee where salary!=(select Max(salary) from employee ) ORDER BY salary DESC LIMIT 1;
+->(select * from employee group by salary order by  salary desc LIMIT 1,1 ;)
 
-SELECT * FROM employee JOIN incentives on employee.EM_ID = incentives.Incentive_Id;    
+j) Select first_name, incentive amount from employee and incentives table for all Employees who got incentives using left join.
+-> SELECT e.FIRST_NAME,NVL(i.incentive_amt,0) AS incentives_amt FROM employee e LEFT JOIN incentives i ON e.EM_ID=i.employee_ref_Id;
+
+k) Create View OF Employee table in which store first name, last name and salary only.
+-> CREATE VIEW employee_view AS SELECT e.FIRST_NAME,e.LAST_NAME,e.SALARY FROM employee e;
+
+
+l) Create Procedure to find out department wise highest salary. 
+-> CREATE PROCEDURE emp_maxsalary(INOUT SALARY INT(10))
+	SELECT e.DEPARTMEN, MAX(e.SALARY) FROM employee e
+	GROUP BY e.DEPARTMEN;
+
+	CALL emp_maxsalary(1);
+
+m) Create after Insert trigger on Employee table which insert records in view table. 
+->	CREATE TRIGGER insert_into_view AFTER INSERT ON employee 
+	FOR EACH ROW 
+         	INSERT INTO employee_view (FIRST_NAME,LAST_NAME,SALARY,)
+            VALUES 
+            (NEW.FIRST_NAME, NEW.LAST_NAME,NEW.SALARY);
+
+INSERT INTO employee(EM_ID,FIRST_NAME,LAST_NAME,SALARY,JOINING_DATE,DEPARTMEN) 
+		VALUES 
+		(9,"yashpal","vala",750000,"2022-01-01","BANKING");
+
