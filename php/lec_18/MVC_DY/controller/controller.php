@@ -1,12 +1,13 @@
 <?php
-    class controller{
 
+    require_once("model/model.php");
+
+    class controller extends model{
         public $base_url = "";
-
         public function __construct(){
+            parent::__construct();
 
             $reqURIdata = explode("/",$_SERVER['REQUEST_URI']);  // array cut
-
             $this->base_url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME']."/".$reqURIdata[1]."/".$reqURIdata[2]."/".$reqURIdata[3]."/".$reqURIdata[4]."/assets/";
 
             if(isset($_SERVER["PATH_INFO"])){
@@ -67,15 +68,16 @@
                         break;
 
                     case '/login':
-                        include_once("views/login_regist.php");
+                        include_once("views/login.php");
                         echo "<pre>";
-                        if(isset($_POST['register'])){
+                        if(isset($_POST['submit'])){
                             print_r($_POST);
+                            array_pop($_POST);
+                            $result = $this->insert('user_det',$_POST);  
+                            print_r($result);
                         }
-                        echo "<pre>";
-                        
+                        echo "</pre>";
                         break;
-
                     default:
                         break;
                 }

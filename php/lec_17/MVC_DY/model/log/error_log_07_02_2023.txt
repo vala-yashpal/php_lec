@@ -46,3 +46,7 @@ error datetime >> 07-Feb-2023 09:45:53 AM
 error message >> php_network_getaddresses: getaddrinfo for locahost failed: No such host is known. 
 error datetime >> 07-Feb-2023 10:02:18 AM
 >> =============================================== <<
+
+error message >> php_network_getaddresses: getaddrinfo for locahost failed: No such host is known. 
+error datetime >> 07-Feb-2023 11:44:04 AM
+>> =============================================== <<
