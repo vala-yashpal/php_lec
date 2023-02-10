@@ -17,7 +17,6 @@
         border: none;
         font-family: "poppins", sans-serif;
         }
-
         :root {
         --firstcolor: #8f32f3;
         --firstcolorlight: #ab65f6;
@@ -63,7 +62,6 @@
         position: relative;
         justify-content: space-between;
         }
-
         .pause {
         animation-play-state: paused;
         }
@@ -92,8 +90,8 @@
         color: var(--firstcolor);
         }
         form {
-            height: 576px;
-            overflow-y: scroll;
+        height: 576px;
+        overflow-y: scroll;
         border-radius: 10px;
         width: 40%;
         box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.701);
@@ -138,7 +136,6 @@
         font-size: 1rem;
         transition: 0.3s ease;
         }
-
         input::placeholder {
         transition: 0.3s ease;
         color: #726f6f;
@@ -149,7 +146,7 @@
         input:is(:active, :focus)::placeholder {
         transform: translateY(-0.5rem);
         color: azure;
-    font-size: 1rem;
+        font-size: 1rem;
         }
         button {
         border-radius: 10px;

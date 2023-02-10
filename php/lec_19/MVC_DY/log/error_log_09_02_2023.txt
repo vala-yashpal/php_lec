@@ -1,0 +1,36 @@
+
+error_message >> CONSTRAINT `user_det.language` failed for `z_drivin`.`user_det`
+error_datetime >> 09-Feb-2023 14:23:16 PM
+>>===============================================<<
+
+error_message >> CONSTRAINT `user_det.language` failed for `z_drivin`.`user_det`
+error_datetime >> 09-Feb-2023 14:24:48 PM
+>>===============================================<<
+
+error_message >> CONSTRAINT `user_det.language` failed for `z_drivin`.`user_det`
+error_datetime >> 09-Feb-2023 14:27:18 PM
+>>===============================================<<
+
+error_message >> CONSTRAINT `user_det.language` failed for `z_drivin`.`user_det`
+error_datetime >> 09-Feb-2023 14:27:31 PM
+>>===============================================<<
+
+error_message >> CONSTRAINT `user_det.language` failed for `z_drivin`.`user_det`
+error_datetime >> 09-Feb-2023 14:28:58 PM
+>>===============================================<<
+
+error_message >> CONSTRAINT `user_det.language` failed for `z_drivin`.`user_det`
+error_datetime >> 09-Feb-2023 14:29:26 PM
+>>===============================================<<
+
+error_message >> CONSTRAINT `user_det.language` failed for `z_drivin`.`user_det`
+error_datetime >> 09-Feb-2023 15:55:34 PM
+>>===============================================<<
+
+error_message >> CONSTRAINT `user_det.language` failed for `z_drivin`.`user_det`
+error_datetime >> 09-Feb-2023 15:58:50 PM
+>>===============================================<<
+
+error_message >> Unknown column 'f_name' in 'where clause'
+error_datetime >> 09-Feb-2023 18:22:55 PM
+>>===============================================<<

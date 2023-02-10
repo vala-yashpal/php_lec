@@ -67,28 +67,44 @@
                         include_once("views/footer.php");
                         break;
 
+                    case '/select':
+                        $result = $this->select('user_det',array("first_name"=>"dodiya","last_name"=>"yash"));  
+                        echo "<pre>";
+                        print_r($result);
+                        break;
+
                     case '/login':
                         include_once("views/login.php");
-                        
+
                         echo "<pre>";
                         if(isset($_POST['submit'])){
-                            print_r($_POST);
-                            // array_pop($_POST);
-                            // exit;
-                            $first_name=$_POST['first_name'];
-                            $last_name=$_POST['last_name'];
-                            $email=$_POST['email'];
-                            $f_password=$_POST['f_password'];
-                            $l_password=$_POST['l_password'];
-                            $age=$_POST['age'];
-                            $Dob=$_POST['Dob'];
-                            $city=$_POST['city'];
-                            $gender=$_POST['gender'];
-                            $language=json_encode($_POST['language']);
-                            
-                            $key_value =['first_name'=> $first_name,'last_name'=> $last_name,'email'=> $email,'f_password'=> $f_password,'l_password'=> $l_password,'age'=> $age,'Dob'=> $Dob,'city'=> $city,'gender'=>$gender,'language'=> $language];
+                            // print_r($_POST);
+            
+                            $language =implode(",",$_POST['language']);
+                            array_pop($_POST);
+                            unset($_POST['language']);
+                             $postdata = array_merge($_POST,array("language"=>$language));
 
-                            $result = $this->insert('user_det',$key_value);
+                            // print_r($postdata);
+                            // print_r($language);
+
+                            // exit;
+                            // // array_pop($_POST);
+                            // // exit;
+                            // $first_name=$_POST['first_name'];
+                            // $last_name=$_POST['last_name'];
+                            // $email=$_POST['email'];
+                            // $f_password=$_POST['f_password'];
+                            // $l_password=$_POST['l_password'];
+                            // $age=$_POST['age'];
+                            // $Dob=$_POST['Dob'];
+                            // $city=$_POST['city'];
+                            // $gender=$_POST['gender'];
+                            // $language=json_encode($_POST['language']);
+    
+                            // $key_value =['first_name'=> $first_name,'last_name'=> $last_name,'email'=> $email,'f_password'=> $f_password,'l_password'=> $l_password,'age'=> $age,'Dob'=> $Dob,'city'=> $city,'gender'=>$gender,'language'=> $language];
+
+                            $result = $this->insert('user_det',$postdata);  
 
                             print_r($result);
                         }
@@ -103,11 +119,7 @@
             }
         }
     }
+
     $controller = new controller;
 
 ?>
-
-<!-- $first_name=$_POST['first_name'];
-                            $language=json_encode($_POST['language']);
-                            
-                            $key_value=['first_name'=>$first_name,'language'=>$language]; -->
