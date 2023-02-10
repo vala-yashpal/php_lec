@@ -44,8 +44,8 @@
 
         public function insert($tbl,$data){
             $column = implode(",",array_keys($data));
-            dd($column);
-            exit;
+            // dd($column);
+            // exit;
             $values = implode("','",$data);
             // dd($tbl);
             // dd($column);
