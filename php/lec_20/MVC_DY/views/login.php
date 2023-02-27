@@ -1,315 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700;800&family=Lora:wght@400;500;600&family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap");
-        * {
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-        outline: none;
-        border: none;
-        font-family: "poppins", sans-serif;
-        }
+    <meta charset="utf-8">
+    <title>Drivin - Driving School Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-        :root {
-        --firstcolor: #8f32f3;
-        --firstcolorlight: #ab65f6;
-        --gradient: linear-gradient(45deg, var(--firstcolor), var(--firstcolorlight));
-        }
-        ::selection {
-        background: var(--firstcolor);
-        color: #000;
-        }
-        body {
-        position: relative;
-        height: 100vh;
-        width: 100%;
-        background: #0b0a0a;
-        overflow: hidden;
-        animation: changebg 10s linear infinite alternate-reverse;
-        }
-        @keyframes changebg {
-        0% {
-            filter: hue-rotate(0deg);
-        }
-        100% {
-            filter: hue-rotate(360deg) brightness(200%);
-        }
-        }
-        .grad {
-        background: linear-gradient(
-            transparent 40%,
-            var(--firstcolor) 60%,
-            transparent
-        );
-        animation: 5s rotate infinite linear;
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        }
-        .cubes {
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        gap: 0.1rem;
-        flex-wrap: wrap;
-        position: relative;
-        justify-content: space-between;
-        }
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
-        .pause {
-        animation-play-state: paused;
-        }
-        @keyframes rotate {
-        0% {
-            transform: translateY(-100%);
-        }
-        100% {
-            transform: translateY(100%);
-        }
-        }
-        .cube {
-        border-radius: 5px;
-        z-index: 1;
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        width: 4rem;
-        height: 4rem;
-        background: #181717;
-        transition: 1.5s ease-in-out;
-        }
-        .cube:hover {
-        transition: 0s;
-        background: var(--gradient);
-        }
-        .colorgreen {
-        color: var(--firstcolor);
-        }
-        form {
-            height: 576px;
-            overflow-y: scroll;
-        border-radius: 10px;
-        width: 40%;
-        box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.701);
-        background: #282626;
-        z-index: 100;
-        text-align: center;
-        padding: 2rem 1.5rem;
-        color: #fff;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        }
-        .inputdiv {
-        margin: 1rem 0;
-        display: grid;
-        gap: 1rem;
-        }
-        .eyeicon.none #eyeoff {
-        scale: 0;
-        }
-        .emailcont {
-        position: relative;
-        }
-        .eyeicon ion-icon {
-        transition: 0.2s ease;
-        position: absolute;
-        right: 0.5rem;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 1.2rem;
-        z-index: 100;
-        cursor: pointer;
-        opacity: 0.7;
-        }
-        input{
-            border-radius: 10px;
-        width: 100%;
-        padding: 1rem;
-        background: #393737;
-        color: azure;
-        font-size: 1rem;
-        transition: 0.3s ease;
-        }
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-        input::placeholder {
-        transition: 0.3s ease;
-        color: #726f6f;
-        }
-        input:is(:active, :focus) {
-        background: #2f2b2b;
-        }
-        input:is(:active, :focus)::placeholder {
-        transform: translateY(-0.5rem);
-        color: azure;
-    font-size: 1rem;
-        }
-        button {
-        border-radius: 10px;
-        width: 100%;
-        padding: 1rem;
-        margin-top: 1rem;
-        transition: 0.3s ease;
-        font-size: 1rem;
-        font-weight: 600;
-        background: #595454;
-        color: #fff;
-        }
-        button:hover {
-        background: var(--firstcolor);
-        }
+    <!-- Libraries Stylesheet -->
+    <link href="<?php echo $this->base_url; ?>lib/animate/animate.min.css" rel="stylesheet">
+    <link href="<?php echo $this->base_url; ?>lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-        label{
-            padding-left: 10px
-        }
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="<?php echo $this->base_url;?>css/bootstrap.min.css" rel="stylesheet">
 
-        .redio{
-        display: flex;
-        margin-top: -11px;
-        }
-        .check{
-            text-align: left;
-            display: flex;
-        }
-        .a{
-            display: flex;
-            padding-left:24px;
-        }
-        .ic{
-            font-size:22px;
-            padding-left: 89%;
-        }
-        .option{
-            display:flex;
-            margin-top: 10px;
-            margin-bottom:10px;
-        }
-        select{
-            width: 30%;
-            /* background-color: #484a48; */
-            font-weight: 600;
-            text-align: center;
-            color: red ;
-        }
-
-    </style>
+    <!-- Template Stylesheet -->
+    <link href="<?php echo $this->base_url;?>css/style.css" rel="stylesheet">
 </head>
+
 <body>
-    <div class="grad"></div>
-    <div class="cubes"></div>
-    <div>
-    <form method = "post">
-            <div class="ic">
-                <a href="home"><i class="fa-sharp fa-solid fa-house-chimney"></i></a>
-            </div>  
-        <h2 class="colorgreen">user detail</h2>
-        <div class="inputdiv">
-            <div>
-                <input type="text" name = "first_name" placeholder="first name" />
-            </div>
-            <div>
-                <input type="text" name = "last_name" placeholder="last name" />
-            </div>
-            <div>
-                <input type="text" name = "email" placeholder="Your Email" />
-            </div>
-            <div class="emailcont">
-                <input type="password" name= "f_password" class="inputtext" placeholder="Your Password" />
-            </div>
-            <div class="emailcont">
-                <input type="password" name= "l_password" class="inputtext" placeholder="re-type Password" />
-                <div class="eyeicon">
-                    <ion-icon id="eyeoff" name="eye-off-outline"></ion-icon>
-                    <ion-icon id="eyeon" name="eye-outline"></ion-icon>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark text-light p-0">
+        <div class="row gx-0 d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center me-4">
+                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                    <small>123 Street, New York, USA</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <small class="far fa-clock text-primary me-2"></small>
+                    <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
                 </div>
             </div>
-            <div class="slidecontainer">
-            <p style="text-align:start;">your age : <span id="demo"></span></p> 
-                <input type="range" name="age" min="18" max="100" value="18" class="slider" id="myRange">
-            </div>
-            <div>
-                <input type="date" name="Dob"/>
-            </div>
-            <div class="option">
-                <p style = "padding-right: 20px;">Choose a city : </p>
-                <select id = "city" name ="city">
-                    <option value="Ahmedabad">Ahmedabad</option>
-                    <option value="Surat">Surat</option>
-                    <option value="Vadodara">Vadodara</option>
-                    <option value="somnath(gir)">somnath(gir)</option>
-                    <option value="junagadh">junagadh</option>
-                    <option value="rajkot">rajkot</option>
-                    <option value="porbandar">porbandar</option>
-                    <option value="amreli">amreli</option>
-                    <option value="bhavnagr">bhavnagr</option>
-                </select>
-            </div>
-            <div class="redio">
-                <p style = "padding-right: 20px;">gender</p>
-                <div class="a">
-                    <input type="radio" id="male" name="gender" value="male">
-                    <label for="male">MALE</label>
+            <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center me-4">
+                    <small class="fa fa-phone-alt text-primary me-2"></small>
+                    <small>+012 345 6789</small>
                 </div>
-                <div class="a">
-                    <input type="radio" id="css" name="gender" value="female">
-                    <label for="female">FEMALE</label>
-                </div>
-            </div>
-            <div class="check">
-                <p>language</p>
-                <div class="a">
-                    <input type="checkbox" id="" name="language[]"  value="html">
-                    <label for="">html</label>
-                </div>
-                <div class="a">
-                    <input type="checkbox" id="" name="language[]"  value="css">
-                    <label for="">css</label>
-                </div>
-                <div class="a">
-                    <input type="checkbox" id="" name="language[]" value="php">
-                    <label for="">php</label>
-                </div>
-                <div class="a">
-                    <input type="checkbox" id="" name="language[]" value="java">
-                    <label for="">java</label>
+                <div class="h-100 d-inline-flex align-items-center mx-n2">
+                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-square btn-link rounded-0" href=""><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
-        <button name="submit" value = "submit">submit</button>
-    </form>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script>
+    </div>
+    <!-- Topbar End -->
 
-            var slider = document.getElementById("myRange");
-            var output = document.getElementById("demo");
-            output.innerHTML = slider.value;
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+        <a href="login" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+            <h2 class="m-0"><i class="fa fa-car text-primary me-2"></i>Drivin</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <!-- <a href="home" class="nav-item nav-link active">Home</a> -->
+                <!-- <a href="about" class="nav-item nav-link">About</a> -->
+                <!-- <a href="courses" class="nav-item nav-link">Courses</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu bg-light m-0">
+                        <a href="feature" class="dropdown-item">Features</a>
+                        <a href="appointment" class="dropdown-item">Appointment</a>
+                        <a href="team" class="dropdown-item">Our Team</a>
+                        <a href="testimonial" class="dropdown-item">Testimonial</a>
+                        <a href="404" class="dropdown-item">404 Page</a>
+                    </div>
+                </div>
+                <a href="contact" class="nav-item nav-link">Contact</a>-->
+            </div>
+            <a href="login" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">LOGIN<i class="fa fa-solid fa-lock ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
 
-            slider.oninput = function() {
-            output.innerHTML = this.value;
-            }
+    <!-- .class="bg-primary text-center p-5" -->
+    <div class="container-xxl py-6">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="position-relative overflow-hidden ps-5 pt-5 h-100" style="min-height: 400px;">
+                    <img class="position-absolute w-100 h-100" src="assets/img/d5.jpg" alt="" style="object-fit: cover;">
+                    <!-- <img class="position-absolute top-0 start-0 bg-white pe-3 pb-3" src="assets/img/d5.jpg" alt="" style="width: 200px; height: 200px;"> -->
+                </div>
+            </div>
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                
+                <h1 class="display-6 text-center mb-4">LOG IN</h1>
+                <form method = "post">
+                    <div class="row g-4">
+                        <div class="col-sm-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control border-0 bg-light" name="user_n_m_e"  id="gname" placeholder="Gurdian Name">
+                                <label for="gname">UserName/Email/Conact Num</label>
+                            </div>
+                        </div>
 
-        const eyeoff = document.querySelector(".eyeicon"),
-        input = document.querySelector(".inputtext");
-        grad = document.querySelector(".grad");
-        eyeoff.addEventListener("click", () => {
-        eyeoff.classList.toggle("none");
-        grad.classList.toggle("pause");
-        input.type === "password" ? (input.type = "text") : (input.type = "password");
-        });
-        for (let i = 0; i < 800; i++) {
-        let cube = `
-        <div class="cube"></div>
-                    `;
-        document.querySelector(".cubes").insertAdjacentHTML("afterbegin", cube);
-        }
-    </script>
+                        <div class="col-sm-12">
+                            <div class="form-floating">
+                                <input type="password" class="form-control border-0 bg-light" name="password" id="gname" placeholder="Gurdian Name">
+                                <label for="gname">Password</label>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-12">
+                            <div class="form-floating" >
+                                <a href = "login" >Forgot Password</a>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="sumbit" value="login"  name="login">Log IN</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

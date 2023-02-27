@@ -1,7 +1,5 @@
 <?php
-
     require_once("model/model.php");
-
     class controller extends model{
         public $base_url = "";
         public function __construct(){
@@ -66,33 +64,58 @@
                         include_once("views/404.php");
                         include_once("views/footer.php");
                         break;
-
+                    
                     case '/login':
                         include_once("views/login.php");
-                        
-                        echo "<pre>";
-                        if(isset($_POST['submit'])){
-                            print_r($_POST);
-                            // array_pop($_POST);
-                            // exit;
-                            $first_name=$_POST['first_name'];
-                            $last_name=$_POST['last_name'];
-                            $email=$_POST['email'];
-                            $f_password=$_POST['f_password'];
-                            $l_password=$_POST['l_password'];
-                            $age=$_POST['age'];
-                            $Dob=$_POST['Dob'];
-                            $city=$_POST['city'];
-                            $gender=$_POST['gender'];
-                            $language=json_encode($_POST['language']);
+
+                        if(isset($_POST['login'])){
+
+                            array_pop($_POST);
+                            // echo "<pre>";
+                            // print_r($_POST);
+                            // echo "</pre>";
+
+                            $user_name = $_POST['user_n_m_e'];
+                            $email = $_POST['user_n_m_e'];
+                            $contact_number = $_POST['user_n_m_e']; 
+                            $Password = $_POST['password'];
                             
-                            $key_value =['first_name'=> $first_name,'last_name'=> $last_name,'email'=> $email,'f_password'=> $f_password,'l_password'=> $l_password,'age'=> $age,'Dob'=> $Dob,'city'=> $city,'gender'=>$gender,'language'=> $language];
-
-                            $result = $this->insert('user_det',$key_value);
-
+                            $logindata = ['user_name'=>$user_name,'email'=> $email,'contact_number'=>$contact_number,'Password'=>$Password];
+                         
+                            $result = $this->select('register',$logindata);  
+                            echo "<pre>";
                             print_r($result);
                         }
-                        echo "</pre>";
+
+                        include_once("views/footer.php");
+                        break;
+
+                    case '/register':
+                        include_once("views/register.php");
+                        if(isset($_POST['register'])){
+                            // print_r($_POST);
+                            array_pop($_POST);
+                            
+                            // exit;
+                            // $first_name=$_POST['first_name'];
+                            // $last_name=$_POST['last_name'];
+                            // $email=$_POST['email'];
+                            // $f_password=$_POST['f_password'];
+                            // $l_password=$_POST['l_password'];
+                            // $age=$_POST['age'];
+                            // $Dob=$_POST['Dob'];
+                            // $city=$_POST['city'];
+                            // $gender=$_POST['gender'];
+                            // $language=json_encode($_POST['language']);
+                
+                            // $key_value =['first_name'=> $first_name,'last_name'=> $last_name,'email'=> $email,'f_password'=> $f_password,'l_password'=> $l_password,'age'=> $age,'Dob'=> $Dob,'city'=> $city,'gender'=>$gender,'language'=> $language];
+
+                            $result = $this->insert('register',$_POST);
+                       
+                            // print_r($result);
+                        }
+                    
+                        include_once("views/footer.php");
                         break;
 
                     default:
@@ -107,7 +130,3 @@
 
 ?>
 
-<!-- $first_name=$_POST['first_name'];
-                            $language=json_encode($_POST['language']);
-                            
-                            $key_value=['first_name'=>$first_name,'language'=>$language]; -->
