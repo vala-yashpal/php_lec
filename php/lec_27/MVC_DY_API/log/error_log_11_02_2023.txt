@@ -1,0 +1,44 @@
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')( email = 'vala yashpal' OR)( contact_number = 'vala yashpal' OR)( Password ...' at line 1
+error_datetime >> 11-Feb-2023 14:26:14 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+error_datetime >> 11-Feb-2023 18:35:42 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+error_datetime >> 11-Feb-2023 18:36:25 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND( Password = '0000')' at line 1
+error_datetime >> 11-Feb-2023 18:37:46 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND( Password = '1234')' at line 1
+error_datetime >> 11-Feb-2023 18:38:35 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND ( Password = '0000')' at line 1
+error_datetime >> 11-Feb-2023 18:43:01 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND ( Password = '123')' at line 1
+error_datetime >> 11-Feb-2023 19:13:21 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND ( Password = '0000')' at line 1
+error_datetime >> 11-Feb-2023 19:13:54 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND ( Password = '0000')' at line 1
+error_datetime >> 11-Feb-2023 19:15:11 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND ( Password = '0000')' at line 1
+error_datetime >> 11-Feb-2023 19:15:59 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND ( Password = '0000')' at line 1
+error_datetime >> 11-Feb-2023 19:19:23 PM
+>>===============================================<<
