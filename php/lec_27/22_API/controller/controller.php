@@ -37,6 +37,46 @@
                             // print_r($Result);
                             break;
 
+                        case '/inserttodo':
+
+                            $data = json_decode(file_get_contents('php://input') );
+
+                            $array = (array) $data;
+
+                            $insetrtodo = $this->insert("todo",$array);
+
+                            echo json_encode($insetrtodo);
+
+                            // echo "<pre>";
+                            // print_r($Result);
+                            break;
+
+                        case '/updatetodo':
+
+                            $data = json_decode(file_get_contents('php://input') );
+                            $id=$_REQUEST;
+
+                            $array = (array) $data;
+
+                            $updatetodo = $this->update("todo",$array,$id);
+
+                            echo json_encode($updatetodo);
+
+                            // echo "<pre>";
+                            // print_r($Result);
+                            break;
+
+                            case '/delettodo':
+                                $id=$_REQUEST;
+                                
+                                $deletetodo = $this->delete("todo",$id);
+                               
+                                echo json_encode($deletetodo);
+    
+                                // echo "<pre>";
+                                // print_r($Result);
+                                break;
+
                         case '/getdatabyid':
                             $Result = $this->select('todo',array("id"=>$_REQUEST['id']));
                             echo json_encode($Result);
