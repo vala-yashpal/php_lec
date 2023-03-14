@@ -1,14 +1,15 @@
 <?php
+    $Question = "08.Write a program for this Pattern:  *****
+                                                *
+                                                *
+                                                *
+                                                *****";
+    echo "<pre>";
+    echo "<h3 style=color:red;>Question =".$Question."<h3>";
+    echo "</pre>";
 
-    /* 08.Write a program for this Pattern:
-    
-        *****
-        *
-        *
-        *
-        *****
          
-    */
+    
     
     for($i=1;$i<=5;$i++)
     {

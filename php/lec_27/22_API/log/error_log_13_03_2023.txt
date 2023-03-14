@@ -1,0 +1,8 @@
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE  id = '1'' at line 1
+error_datetime >> 13-Mar-2023 14:11:08 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE  id = '1'' at line 1
+error_datetime >> 13-Mar-2023 14:11:48 PM
+>>===============================================<<

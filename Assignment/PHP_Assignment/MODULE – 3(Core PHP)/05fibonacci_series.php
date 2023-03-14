@@ -1,6 +1,8 @@
 <?php
+     $Question = " 05.Write a program in PHP to print Fibonacci series. 0, 1, 1, 2, 3, 5, 8, 13, 21,34 ";
+        
+     echo "<h3 style=color:red;>Question =".$Question."<h3>";
 
-// 05.Write a program in PHP to print Fibonacci series. 0, 1, 1, 2, 3, 5, 8, 13, 21,34 
     
     $f1=1;
 	$f2=0;

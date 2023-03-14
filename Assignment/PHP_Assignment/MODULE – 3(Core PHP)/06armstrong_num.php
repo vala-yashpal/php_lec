@@ -1,6 +1,6 @@
  <?php
-
-   // 06.Write a program to find whether a number is Armstrong or not 
+        $Question = " 06.Write a program to find whether a number is Armstrong or not ";
+        echo "<h3 style=color:red;>Question =".$Question."<h3>";
     
     $digit=153;
     $sum=0;

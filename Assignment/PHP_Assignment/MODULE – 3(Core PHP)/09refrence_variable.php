@@ -1,11 +1,17 @@
 <?php 
 
-    // • What will be the values of $a and $b after the code below is executed? Explain your answer.
-    // $a = '1';
-    // $b = &$a;
-    // $b = "2$b"; 
+    $Question = "09  What will be the values of $ a and $ b after the code below is executed? Explain your answer.";
+
+    echo "<pre>";
+    echo "<h3 style=color:red;>Question =".$Question."<h3>";
+    echo "</pre>";
+    
+    $a = '1';
+    $b = &$a;
+    $b = "2$b";
 
     $a = '1';
+    
     echo $a."<br>";
 
     $b = &$a;

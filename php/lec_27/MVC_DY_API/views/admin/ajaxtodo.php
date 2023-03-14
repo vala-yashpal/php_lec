@@ -95,12 +95,13 @@
                             // console.log("deletetododata");
                         
                             fetch("http://localhost/php_lec_tops/php/lec_27/22_API/delettodo?id="+id,{
-                            method: 'GET',
+                            method: 'POST',
                             headers: {
                             'Accept': 'application/json',
                             'Content-Type': 'application/json'
                             }}).then((response)=>response.json()).then((result)=> {
-                            if(result !=""){
+                                console.log(result);
+                            if(result.Code == 1){
                                 alert("delete seccussfully");
                             }
                                 load_deta();
@@ -118,9 +119,11 @@
                                 // console.log(result.Data[0].todo_title);
                                 document.getElementById('todoitems').value = result.Data[0].todo_title
                                 drpVal = ["pending","Active","Completed"];
-                                drpOption = ""
-                                drpVal.forEach(element => {
 
+                                drpOption = ""
+
+                                drpVal.forEach(element => {
+                                    "pending","Active","Completed"
                                     if(result.Data[0].status == element){
                                         drpOption += `<option selected>${element}</option>`
                                     }else{
@@ -154,7 +157,7 @@
                                 result.Data.forEach(element => {
                                     // console.log(element.todo_title);
                                     HTMLTableBodyTodoData += `<tr>
-                                    <td>${element.id}</td>
+                                    <td> <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
                                     <td>${element.id}</td>
                                     <td>${element.todo_title}</td>
                                     <td>${element.status}</td>
@@ -188,19 +191,18 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                    <th> <input type="checkbox" id="check" name="check" value=""></th>
                                     <th>Srno</th>
                                     <th>Title</th>
                                     <th>Status</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
-                                    <!-- <th>Contact_number</th>
-                                    <th>Date_of_birth</th>
-                                    <th>Action</th> -->
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                <th>Srno</th>
+                                    <th>select</th>
+                                    <th>Srno</th>
                                     <th>Title</th>
                                     <th>Status</th>
                                     <th>Edit</th>

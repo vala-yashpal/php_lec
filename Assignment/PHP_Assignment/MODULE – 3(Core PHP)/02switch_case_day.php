@@ -1,6 +1,8 @@
 <?php
+         $Question = "02.write a PHP program for find „Thursday‟ in week using switch Function.";
+         
+         echo "<h3 style=color:red;>Question =".$Question."<h3>";
     
-    // 02.write a PHP program for find „Thursday‟ in week using switch Function.
     
     $day=5;
 	

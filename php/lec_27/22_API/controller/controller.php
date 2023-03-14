@@ -54,6 +54,7 @@
                         case '/updatetodo':
 
                             $data = json_decode(file_get_contents('php://input') );
+                            
                             $id=$_REQUEST;
 
                             $array = (array) $data;
@@ -68,7 +69,7 @@
 
                             case '/delettodo':
                                 $id=$_REQUEST;
-                                
+
                                 $deletetodo = $this->delete("todo",$id);
                                
                                 echo json_encode($deletetodo);

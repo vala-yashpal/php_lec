@@ -1,9 +1,12 @@
 <?php 
-// . Write a program to print the below format :
-// 1 5 9
-// 2 6 10
-// 3 7 11
-// 4 8 12
+$Question = "07 Write a program to print the below format : 1 5 9
+                                                        2 6 10
+                                                        3 7 11
+                                                        4 8 12";
+echo "<pre>";
+echo "<h3 style=color:red;>Question =".$Question."<h3>";
+echo "</pre>";
+
 
 $num1=1;
 $num2=4;
