@@ -131,6 +131,31 @@
                         include_once("views/footer.php");
                         break;
 
+                    case '/forgotpass':
+                        include_once("views/forgotpass.php");
+                        // if(isset($_POST['login'])){
+                        
+                        //     $result = $this->login($_POST['user_n_m_e'],$_POST['password']);
+                            
+                        //     if($result['Code'] == 1){
+                                
+                        //         $_SESSION['userdata'] = $result['Data'][0];
+
+                        //         // echo "<pre>";
+                        //         // print_r($_SESSION['userdata']);
+                                
+                        //         if($result['Data'][0]->id == 1){
+                        //             header("location:admindashboard");
+                        //         }else{
+                        //             header("location:home");
+                        //         }
+                        //     }else{
+                        //         echo '<script>alert("Invalid User")</script>';
+                        //     }
+                        // }
+                        include_once("views/footer.php");
+                        break;
+
                     case '/admindashboard':
                         $Allusers = $this->select('register');
 

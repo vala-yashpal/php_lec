@@ -22,6 +22,16 @@
                     case '/home':
                         echo "<h2>welcome to our api success</h2>";
                         break;
+
+                        case '/register':
+                            
+                            $data = json_decode(file_get_contents('php://input') );
+                            $array = (array) $data;
+
+                            $ragister_user = $this->insert("register",$array);
+
+                            echo json_encode($ragister_user);
+                        break;
                     
                         case '/select':
                             $result = $this->select('register');

@@ -47,6 +47,7 @@
             // dd($column);
             // dd($data);
             $sql = "INSERT INTO $tbl ($column) values ('$values')";
+            
             // $queryex=$this->connection->query("INSERT INTO $tbl ($column) values ('$values')");  //right
             try{
                 $query_execute = $this->connection->query($sql);

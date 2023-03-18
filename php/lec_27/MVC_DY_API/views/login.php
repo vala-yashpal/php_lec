@@ -115,7 +115,8 @@
             <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
                 
                 <h1 class="display-6 text-center mb-4">LOG IN</h1>
-                <form method = "post">
+
+                <form onsubmit="event.prer" method = "post">
                     <div class="row g-4">
                         <div class="col-sm-12">
                             <div class="form-floating">
@@ -133,7 +134,7 @@
                         
                         <div class="col-sm-12">
                             <div class="form-floating" >
-                                <a href = "login" >Forgot Password</a>
+                                <a href = "forgotpass" >Forgot Password</a>
                             </div>
                         </div>
 
