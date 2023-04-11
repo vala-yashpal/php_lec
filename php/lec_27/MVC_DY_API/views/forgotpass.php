@@ -33,6 +33,13 @@
             window.history.replaceState( null, null, window.location.href );
         }
     </script>
+    <style>
+        .error{
+            color: red;
+            font-size: 90%;
+            padding-top: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -82,71 +89,130 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <!-- <a href="home" class="nav-item nav-link active">Home</a> -->
-                <!-- <a href="about" class="nav-item nav-link">About</a> -->
-                <!-- <a href="courses" class="nav-item nav-link">Courses</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu bg-light m-0">
-                        <a href="feature" class="dropdown-item">Features</a>
-                        <a href="appointment" class="dropdown-item">Appointment</a>
-                        <a href="team" class="dropdown-item">Our Team</a>
-                        <a href="testimonial" class="dropdown-item">Testimonial</a>
-                        <a href="404" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
-                <a href="contact" class="nav-item nav-link">Contact</a>-->
+                <a href="login" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Log IN<i class="fa fa-solid fa-key ms-3"></i></a>
             </div>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Forgot Password<i class="fa fa-solid fa-lock ms-3"></i></a>
         </div>
     </nav>
-    <!-- Navbar End -->
 
-    <!-- .class="bg-primary text-center p-5" -->
-    <div class="container-xxl py-6">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="position-relative overflow-hidden ps-5 pt-5 h-100" style="min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="assets/img/d5.jpg" alt="" style="object-fit: cover;">
-                    <!-- <img class="position-absolute top-0 start-0 bg-white pe-3 pb-3" src="assets/img/d5.jpg" alt="" style="width: 200px; height: 200px;"> -->
+    <div id="formdiv" style="display: block;" class="container-xxl py-6">
+        <div class="container">
+            <div class="row g-5">
+            <div class="col-lg-3 wow fadeInUp" data-wow-delay="0.5s"></div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <h1 class="display-6 text-center mb-4">Forgot Password</h1>
+
+                    <form id="resetpass" name="resetpass" onsubmit="event.preventDefault(); validateForm() " method="post">
+                        <div class="row g-4">
+                            <div class="col-sm-12">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control border-0 bg-light" name="email"  id="email" placeholder="Gurdian Name">
+                                    <label for="email">Enter Your Register Email</label>
+                                </div>
+                                <div class="error" id="emailErr" ></div>
+                            </div>
+                            <!-- <div id="messdiv" style="display:none">
+                                <label for="">check your inbox</label>
+                            </div> -->
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="sumbit"  value="login"  name="login">Send Link</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </div>
-            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                
-                <h1 class="display-6 text-center mb-4">Forgot Password</h1>
-
-                <form onsubmit="event.prer" method = "post">
-                    <div class="row g-4">
-                        <div class="col-sm-12">
-                            <div class="form-floating">
-                                <input type="text" class="form-control border-0 bg-light" name="user_n_m_e"  id="gname" placeholder="Gurdian Name">
-                                <label for="gname">UserName/Email/Conact Num</label>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12">
-                            <div class="form-floating">
-                                <input type="password" class="form-control border-0 bg-light" name="password" id="gname" placeholder="Gurdian Name">
-                                <label for="gname">Password</label>
-                            </div>
-                        </div>
-                        
-                        <div class="col-sm-12">
-                            <div class="form-floating" >
-                                <a href = "forgotpass" >Forgot Password</a>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="sumbit" value="login"  name="login">Log IN</button>
-                        </div>
-
-                    </div>
-                </form>
             </div>
         </div>
     </div>
-</div>
+
+    <div id="messdiv" style="display: none;" class="container-xxl py-6">
+        <div class="container">
+            <div class="row g-5">
+            <div class="col-lg-3 wow fadeInUp" data-wow-delay="0.5s"></div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="card" >
+                            <div class="card-body">
+                                <div class="d-flex align-items-end flex-column">
+                                    <a href="login" class="btn btn-primary mb-4 p-2">X</a>
+                                </div>
+                                <h5 class="card-title pb-3">Check  inbox </h5> 
+                            </div>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+
+        function printError(elemId, hintMsg) {
+            document.getElementById(elemId).innerHTML = hintMsg;
+        }
+
+        function validateForm() {
+            // Retrieving the values of form elements 
+            var email = document.resetpass.email.value;
+            
+            var  emailErr = true;
+
+            // Validate email address
+            if(email == "") {
+                printError("emailErr", "Please enter your email address");
+            } else {
+                // Regular expression for basic email validation
+                var regex = /^\S+@\S+\.\S+$/;
+                if(regex.test(email) === false) {
+                    printError("emailErr", "Please enter a valid email address");
+                } else{
+                    printError("emailErr", "");
+                    emailErr = false;
+                }
+            }
+
+             // Prevent the form from being submitted if there are any errors
+             if( emailErr  == true) {
+                    return false;
+                } else {
+                    resertpas(); 
+                }
+            };
+
+            function resertpas(){
+                
+                var result = {};
+                $.each($('#resetpass').serializeArray(), function () {
+                    result[this.name] = this.value;
+                });
+
+                // console.log(result);
+
+                fetch("http://localhost/php_lec_tops/php/lec_27/22_API/resetpassword",{
+                method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(result)
+                }).then((response)=>response.json()).then((result)=> {
+
+                    if(result['Code'] == 1){
+                        alert("user fatch success");
+
+                        mess();
+                        
+                    }else{
+                        alert("user fatch Error");
+
+                        mess();
+                    }
+                })
+            }
+
+            function mess(){
+                document.getElementById('formdiv').style.display = 'none';
+                document.getElementById('messdiv').style.display = 'block';
+            };
+    </script> 
 </body>
 </html>

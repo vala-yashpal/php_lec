@@ -79,6 +79,7 @@
 
     <!-- Template Javascript --> 
     <script src="<?php echo $this->base_url;?>js/main.js"></script>
+    
 </body>
 
 </html>

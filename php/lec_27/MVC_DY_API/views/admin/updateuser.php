@@ -16,10 +16,10 @@
 
                 <div class="card-body">
                 <?php 
-                // echo "<pre>";
-                //  print_r($userdatabyid['Data'][0]);
-                  ?>
-                    <form method="post">
+                    // echo "<pre>";
+                    //  print_r($userdatabyid['Data'][0]);
+                ?>
+                    <form method="post" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-sm-4"  style="padding-top: 30px;">
                                 <div class="form-floating">
@@ -100,6 +100,17 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm-4"  style="padding-top: 30px;">
+                                <div class="form-floating">
+                                    <input type="file" class="form-control border-0 bg-light" accept="image/*" id="item_image"  name ="item_image"  >
+                                </div>
+                            </div>
+                            <div class="col-sm-6"  style="padding-top: 30px;">
+                                <div class="form-floating">
+                                    <input type="text" name="item_image_old" value="<?php echo $userdatabyid['Data'][0]->prof_img; ?>" id="item_image_old">
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                         <div class="col-12"  style="padding-top: 30px;">

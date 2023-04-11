@@ -4,10 +4,10 @@
    <div class="container-fluid">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <h6 class="text-primary text-uppercase mb-2"></h6>
-                <h1 class="display-6 pt-4">Product</h1>
+                <h1 class="display-6 pt-4"> Product </h1>
             </div>
             <div class="row g-4 justify-content-center">
-                <?php foreach ($allproduct_user['Data'] as $key => $value) { ?>
+                <?php foreach ($limit_product_user['Data'] as $key => $value) { ?>
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="courses-item d-flex flex-column bg-white overflow-hidden h-100">
                             <div class="position-relative mt-auto">
@@ -27,7 +27,53 @@
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php }
+                
+                    if(count($allproduct_user['Data']) > 0)
+                    {
+                    
+                        $total_record = count($allproduct_user['Data']);
+                        $limit = 4;
+                        $total_page = ceil($total_record/$limit);
+
+                        echo '<nav aria-label="Page navigation">';
+                            echo '<ul class="pagination justify-content-end"> ';
+                                if($page > 1){
+                                    echo '<li class="page-item"><a class="page-link" href="userproduct?page='.($page - 1).'">Prev</a></li>';
+                                }
+                                for($i = 1; $i <= $total_page; $i++){
+
+                                    if($i == $page){
+                                        $active = "active";
+                                    }else{
+                                        $active = "";
+                                    }
+
+                                    echo '<li class="page-item '.$active.'"><a class="page-link" href="userproduct?page='.$i.'">'.$i.'</a></li>';
+                                }
+
+                                if($total_page > $page){
+                                    echo '<li class="page-item"><a class="page-link" href="userproduct?page='.($page + 1).'">Next</a></li>';
+                                }
+                            echo '</ul>';
+                        echo '</nav>';
+                    };
+                ?>
+
+                <!-- <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav> -->
+
             </div>
         </div>
     </div> 

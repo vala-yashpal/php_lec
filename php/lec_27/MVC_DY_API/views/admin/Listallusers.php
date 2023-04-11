@@ -71,7 +71,8 @@
                                             <a href ="deleteuser?id=<?php echo $value->id ?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
-                                <?php } ?>
+
+                                <?php  } ?>
                             </tbody>
                         </table>
                     </div>
@@ -85,6 +86,7 @@
                                         <th>Email</th>
                                         <th>Contact_number</th>
                                         <th>Date_of_birth</th>
+                                        <th>User_Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -95,6 +97,7 @@
                                         <th>Email</th>
                                         <th>Contact_number</th>
                                         <th>Date_of_birth</th>
+                                        <th>User_Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
@@ -108,6 +111,8 @@
                                             <td><?php echo $value->email ?></td>
                                             <td><?php echo $value->contact_number ?></td>
                                             <td><?php echo $value->date_of_birth ?></td>
+                                            <td><img width="80px" src="uploads/<?php echo $value->prof_img ?>" alt=""></td>
+                                            
                                             <td>
                                                 <a href = "edituser?userid=<?php echo $value->id ?>" class="btn btn-primary mr-3 ml-4"><i class="fas fa-edit"></i></a>
                                                 <a href ="deleteuser?id=<?php echo $value->id ?>" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>

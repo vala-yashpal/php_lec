@@ -98,11 +98,15 @@
                     </div>
                 </div>
                 <a href="contact" class="nav-item nav-link">Contact</a>
-                
+               
+            <div>
+
+                <div>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Welcome  <?php if(isset($_SESSION['userdata'])){echo $_SESSION['userdata']->user_name;}?></span>
-                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            <!-- <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> -->
+                            <img width="40px"; class="img-profile rounded-circle" src="uploads/<?php if(isset($_SESSION['userdata'])){echo $_SESSION['userdata']->prof_img;}?>" alt="">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-end shadow animated--grow-in show" aria-labelledby="userDropdown">
@@ -119,7 +123,7 @@
                                 admin dashboard
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="admindashboard" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item" href="logout" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>

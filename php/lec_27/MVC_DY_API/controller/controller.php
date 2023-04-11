@@ -16,10 +16,7 @@
             $reqURIdata = explode("/",$_SERVER['REQUEST_URI']);  // array cut
             $this->base_url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME']."/".$reqURIdata[1]."/".$reqURIdata[2]."/".$reqURIdata[3]."/".$reqURIdata[4]."/assets/";
             
-            // echo "<pre>";
-            // print_r($_SERVER);
-            // echo "</pre>";
-            // exit;
+            
 
             if(!isset($_SERVER["PATH_INFO"]))
             {
@@ -27,114 +24,139 @@
             }
             if(isset($_SERVER["PATH_INFO"])){
 
+
+            
                 switch ($_SERVER["PATH_INFO"]){
+                
                     case '/home':
                         include_once("views/headerr.php");
                         include_once("views/main.php");
                         include_once("views/footer.php");
-                        break;
+                    break;
 
+                    case '/session':
+                        $user_data = json_decode(file_get_contents('php://input'));
+                        $user = $user_data['0'];
+
+                        $_SESSION['userdata'] = $user;
+                  
+                        if(isset($_SESSION['userdata'])){
+                            echo json_encode("true");
+                        }else{
+                            echo json_encode("false");
+                        }
+                    break;
+
+                    case '/logout':
+                        session_unset();
+                        session_destroy();
+                        header("location:register");
+                    break;
+            
                     case '/userproduct':
+
                         $allproduct_user = $this->select('product1_data');
+
+                        if(count($allproduct_user['Data']) > 0){
+                            $where="";
+                            $limit = 4;
+
+                            if(isset($_GET['page'])){
+                                $page = $_GET['page'];
+                            }else{
+                                $page = 1;
+                            }
+                            
+                            $offfset = ($page- 1) * $limit;
+    
+                            $limit_product_user=$this->select('product1_data',$where, $offfset,$limit);
+                        }
+
+                        // echo "<pre>";
+                        // print_r($allproduct_user['Data']);
+                        // echo "</pre>";
+                        // exit;
+
                         include_once("views/headerr.php");
                         include_once("views/user_product.php");
                         include_once("views/footer.php");
-                        break;
+                    break;
 
+                    
                     case '/about':
                         include_once("views/headerr.php");
                         include_once("views/about.php");
                         include_once("views/footer.php");
-                        break;
+                    break;
 
+        
                     case '/courses':
                         include_once("views/headerr.php");
                         include_once("views/courses.php");
                         include_once("views/footer.php");
-                        break;
+                    break;
                         
+                
                     case '/contact':
                         include_once("views/headerr.php");
                         include_once("views/contact.php");
                         include_once("views/footer.php");
-                        break;
+                    break;
 
+                    
                     case '/feature':
                         include_once("views/headerr.php");
                         include_once("views/features.php");
                         include_once("views/footer.php");
-                        break;
+                    break;
 
+                    
                     case '/appointment':
                         include_once("views/headerr.php");
                         include_once("views/appointment.php");
                         include_once("views/footer.php");
-                        break;
+                    break;
 
                     case '/team':
                         include_once("views/headerr.php");
                         include_once("views/team.php");
                         include_once("views/footer.php");
-                        break;
+                    break;
 
+                    
                     case '/testimonial':
                         include_once("views/headerr.php");
                         include_once("views/testimonial.php");
                         include_once("views/footer.php");
-                        break;
+                    break;
 
                     case '/register':
-                        include_once("views/register.php");
-
-                        if(isset($_POST['register'])){
-                            array_pop($_POST);
+                        
+                        // if(isset($_POST['register'])){
+                        //     array_pop($_POST);
                             
-                            $result = $this->insert('register',$_POST);
-                            // print_r($result);
-                            $this->SendEmail($_POST['email'], "Register Success drivin school_local");
-                            if($result['Code'] == 1){
+                        //     $result = $this->insert('register',$_POST);
+                        //     // print_r($result);
+                        //     $this->SendEmail($_POST['email'], "Register Success drivin school_local");
+                        //     if($result['Code'] == 1){
                                 
-                                echo  '<script>
-                                        alert("registration success")
-                                        window.location.href="login"
-                                    </script>';
+                        //         echo  '<script>
+                        //         alert("registration success")
+                        //         window.location.href="login"
+                        //         </script>';
                                 
-                            }else{
-                                echo  '<script>alert("erroer while inserting ")</script>';
-                            }
-                        }
+                        //     }else{
+                        //         echo  '<script>alert("erroer while inserting ")</script>';
+                        //     }
+                        // }
+                        include_once("views/register.php");
                         include_once("views/footer.php");
-                        break;
+
+                    break;
                         
                     case '/login':
-                        include_once("views/login.php");
-                        if(isset($_POST['login'])){
-                        
-                            $result = $this->login($_POST['user_n_m_e'],$_POST['password']);
-                            
-                            if($result['Code'] == 1){
-                                
-                                $_SESSION['userdata'] = $result['Data'][0];
-
-                                // echo "<pre>";
-                                // print_r($_SESSION['userdata']);
-                                
-                                if($result['Data'][0]->id == 1){
-                                    header("location:admindashboard");
-                                }else{
-                                    header("location:home");
-                                }
-                            }else{
-                                echo '<script>alert("Invalid User")</script>';
-                            }
-                        }
-                        include_once("views/footer.php");
-                        break;
-
-                    case '/forgotpass':
-                        include_once("views/forgotpass.php");
                         // if(isset($_POST['login'])){
-                        
+
                         //     $result = $this->login($_POST['user_n_m_e'],$_POST['password']);
                             
                         //     if($result['Code'] == 1){
@@ -143,30 +165,46 @@
 
                         //         // echo "<pre>";
                         //         // print_r($_SESSION['userdata']);
-                                
-                        //         if($result['Data'][0]->id == 1){
-                        //             header("location:admindashboard");
+
+                        //         if(isset($result['Data'][0])){
+
+                        //             if($result['Data'][0]->id == 1){
+
+                        //                 header("location:admindashboard");
+                        //             }else{
+                        //                 header("location:home");
+                        //             }
+
                         //         }else{
-                        //             header("location:home");
+                        //             header("location:login");
                         //         }
                         //     }else{
                         //         echo '<script>alert("Invalid User")</script>';
                         //     }
                         // }
+                        include_once("views/login.php");
                         include_once("views/footer.php");
-                        break;
+                    break;
+                    
+                    case '/forgotpasslink':
+                        include_once("views/forgotpasslink.php");
+                        include_once("views/footer.php");
+                    break;
+
+                    case '/forgotpass':
+                        include_once("views/forgotpass.php");
+                        include_once("views/footer.php");
+                    break;
 
                     case '/admindashboard':
-                        $Allusers = $this->select('register');
 
-                        $_SESSION['userdata'] = $Allusers['Data'][0];
-                        // dd($_SESSION['userdata']->user_name);
-                        // print_r($_SESSION);
+                        $Allusers = $this->select('register');
+                        // $_SESSION['admin'] = $Allusers['Data'][0];
 
                         include_once("views/admin/adminheader.php");
                         include_once("views/admin/admindashbord.php");
                         include_once("views/admin/adminfooter.php");
-                        break;
+                    break;
 
                     case '/allusers':
                         $Allusers = $this->select('register');
@@ -175,12 +213,11 @@
                             $search_data = array("id"=>$_POST['search_value'],"user_name"=>$_POST['search_value'],"email"=>$_POST['search_value'],"contact_number"=>$_POST['search_value'],"date_of_birth"=>$_POST['search_value']);
 
                             $search_result = $this->search('register',$search_data);
-
                         }
                         include_once("views/admin/adminheader.php");
                         include_once("views/admin/Listallusers.php");
                         include_once("views/admin/adminfooter.php");
-                        break;
+                    break;
 
                     case '/newuseradd':
                         if(isset($_POST['adminadd'])){
@@ -206,41 +243,53 @@
                         include_once("views/admin/adminheader.php");
                         include_once("views/admin/newuseradd.php");
                         include_once("views/admin/adminfooter.php");
-                        break;
+                    break;
 
                     case '/edituser':
+
                         $userdatabyid = $this->select('register',array("id"=>$_REQUEST['userid']));
-                        // echo "<pre>";
-                        // print_r($userdatabyid);
-                        // exit;
-                        include_once("views/admin/adminheader.php");
-                        include_once("views/admin/updateuser.php");
-                        include_once("views/admin/adminfooter.php");
-
+    
                         if(isset($_POST['Update'])){
-                        
-                            $hobby =implode(",",$_POST['hobby']);
-                                // array_pop($_POST);
-                                // unset($_POST['hobby']);
-                                // $postdata = array_merge($_POST,array("hobby"=>$hobby));
-                                // dd($postdata);
-                                // exit;
 
-                            $post_data = array("user_name"=>$_POST['user_name'],"email"=>$_POST['email'],"contact_number"=>$_POST['contact_number'],"date_of_birth"=>$_POST['date_of_birth'],"gender"=>$_POST['gender'],"hobby"=>$hobby);
-                           
-                            $updateusers = $this->update('register',$post_data,array("id"=>$_REQUEST['userid']));
+                            if($_FILES['item_image']['error'] == 0){
+
+                                $fileName = $_FILES['item_image']['name'];
+
+                                if(move_uploaded_file($_FILES['item_image']['tmp_name'], "uploads/$fileName")){
+
+                                    echo "<script> alert('image uploading successfully'); </script>";
+                                }else{
+
+                                    echo "<script>alert('image uploading error')</script>";
+                                }
+
+                            }else{
+                                $fileName = $_POST['item_image_old'];
+                            }
+                       
+
+                            $img = $fileName;
+
+                            $hobby =implode(",",$_POST['hobby']);
                             
+                            $post_data = array("user_name"=>$_POST['user_name'],"email"=>$_POST['email'],"contact_number"=>$_POST['contact_number'],"date_of_birth"=>$_POST['date_of_birth'],"gender"=>$_POST['gender'],"hobby"=>$hobby,"prof_img"=>$img);
+                    
+                            $updateusers = $this->update('register',$post_data,array("id"=>$_REQUEST['userid']));
+
                             if($updateusers["Code"] == 1){
                                 echo '<script> 
                                         alert("update data success") 
                                         window.location.href="allusers"
                                     </script>';
-                                // header("location:allusers");
                             }else{
                                 echo "<script>alert('try after some time')</script>";
                             }
                         }
-                        break;
+                        
+                        include_once("views/admin/adminheader.php");
+                        include_once("views/admin/updateuser.php");
+                        include_once("views/admin/adminfooter.php");
+                    break;
 
                     case '/deleteuser':
                         
@@ -258,42 +307,57 @@
                             echo  '<script>alert("erroer while deleting ")</script>';
 
                         }
-                        break;
+                    break;
+                    
                     case '/allproduct':
+
                         $allproduct = $this->select('product1_data');
                         
                         // echo "<pre>";
                         // print_r($allproduct['Data']);
-                        // exit;                        
+                        // exit;  
+
                         include_once("views/admin/adminheader.php");
                         include_once("views/admin/admin_product.php");
                         include_once("views/admin/adminfooter.php");
-                        break;
+                    break;
 
                     case '/add_product':
 
                         if(isset($_POST['add_item'])){
 
-                            $img = "https://i.dummyjson.com/data/products/14/thumbnail.jpg";
-                            array_pop($_POST);
-                            $postdata = array_merge($_POST,array("item_image"=>$img));
-                            // dd($postdata);
-                            // exit;
-                            $result = $this->insert('product1_data',$postdata);
-                            
-                            if($result['Code'] == 1){
+                            $fileName = $_FILES['item_image']['name'];
+
+                            if(move_uploaded_file($_FILES['item_image']['tmp_name'], "uploads/$fileName")){
                                 
-                                echo  '<script>alert("iteam added success")</script>';
-                                header("location:allproduct");
+                                $img = $fileName;
+                                array_pop($_POST);
+
+                                $postdata = array_merge($_POST,array("item_image"=>$img));
+                                // dd($postdata);
+                                // exit;
+                                $result = $this->insert('product1_data',$postdata);
                                 
+                                if($result['Code'] == 1){
+                                    
+                                    echo  '<script>alert("iteam added success")</script>';
+                                    header("location:allproduct");
+                                    
+                                }else{
+                                    echo  '<script>alert("erroer while inserting ")</script>';
+                                }
                             }else{
-                                echo  '<script>alert("erroer while inserting ")</script>';
+                                echo "there is some error while file uploading";
                             }
+                            
+                            exit;
+                           
                         }
+
                         include_once("views/admin/adminheader.php");
                         include_once("views/admin/add_product.php");
                         include_once("views/admin/adminfooter.php");
-                        break;
+                    break;
 
                     case '/editproduct':
 
@@ -326,7 +390,8 @@
                                 echo "<script>alert('try after some time')</script>";
                             }
                         }
-                        break;
+                    break;
+
                     case '/deleteproduct':
 
                         $item_id = $_REQUEST;
@@ -342,19 +407,19 @@
                         }else{
                             echo  '<script>alert("erroer while deleting ")</script>';
                         }
-                        break;
+                    break;
 
                     case '/ajaxtodo':
                         include_once("views/admin/adminheader.php");
                         include_once("views/admin/ajaxtodo.php");
                         include_once("views/admin/adminfooter.php");
-                        break;
+                    break;
 
                     default:
                         include_once("views/headerr.php");
                         include_once("views/404.php");
                         include_once("views/footer.php");
-                        break;
+                    break;
                 }
             }else{
                 header("location:home");
@@ -369,7 +434,7 @@
             $mail->Host = 'smtp.gmail.com';                // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                       // Enable SMTP authentication
             $mail->Username   = 'yashpaltest@gmail.com'; //SMTP username
-            $mail->Password   = 'lwtceitllyxhwhkb';     // your password 2step varified 
+            $mail->Password   = 'efdhvamrzaaekclz';     // your password 2step varified 
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;     //587 is used for Outgoing Mail (SMTP) Server.
             $mail->setFrom('yashpaltest@gmail.com', 'yashpal vala');
@@ -381,14 +446,14 @@
             $mail->Body    = $bodyContent;
             $mail->Subject = 'Email from Localhost by yashpal';
             if (!$mail->send()) {
-                echo 'Message was not sent.';
                 echo 'Mailer error: ' . $mail->ErrorInfo;
             } else {
-                echo '<script>alert("Message has been sent");</script>';
+                echo "Message has been sent";
             }
 
         }
-    }   
+    }  
+
     $controller = new controller;
 ?>
 

@@ -17,7 +17,8 @@
                         <div class = "justify-content-center">
                             <div class="bg-primary text-center p-3 ">
                                 <h1 class="mb-4" style ="color:#fff;">Add Product</h1>
-                                <form method = "post">
+
+                                <form method = "post" enctype="multipart/form-data">
                                     <div class="row g-3 ">
                                         <div class="col-sm-6 ">
                                             <div class="form-floating py-2">
@@ -40,7 +41,7 @@
                                         </div>
                                         <div class="col-sm-6 ">
                                             <div class="form-floating py-2">
-                                                <input type='file' class="form-control border-0 py-5" id="imgInp" />
+                                                <input type='file' name="item_image" class="form-control border-0 py-5" accept="image/*" id="imgInp" />
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ">
@@ -50,10 +51,11 @@
                                         </div>
                                      
                                         <div class="col-12">
-                                            <button class="btn btn-dark w-100 py-3" type="submit" value ="add_item" name="add_item">Add Product</button>
+                                            <button class="btn btn-dark w-100 py-3" type="submit" value =" " name="add_item">Add Product</button>
                                         </div>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>

@@ -127,8 +127,8 @@
         }
 
 
-        public function select($tbl,$where=""){
-             
+        public function select($tbl,$where="",$offfset="",$limit=""){
+            
             $sql = "SELECT * FROM $tbl ";
             
             if($where != ""){
@@ -140,6 +140,12 @@
                 // echo "$sql";
             }
 
+            if($offfset != "" && $limit != ""){
+                $sql .= "LIMIT"; 
+                $sql .=  " $offfset , $limit ";
+            }
+            // echo $sql;
+           
             try{
                 $query_execute = $this->connection->query($sql);
                 

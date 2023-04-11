@@ -28,11 +28,18 @@
 
     <!-- Template Stylesheet -->
     <link href="<?php echo $this->base_url;?>css/style.css" rel="stylesheet">
-    <script>
+    <!-- <script>
         if ( window.history.replaceState ) {
             window.history.replaceState( null, null, window.location.href );
         }
-    </script>
+    </script> -->
+    <style>
+         .error {
+            color: red;
+            font-size: 90%;
+            padding-top: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -82,22 +89,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <!-- <a href="home" class="nav-item nav-link active">Home</a> -->
-                <!-- <a href="about" class="nav-item nav-link">About</a> -->
-                <!-- <a href="courses" class="nav-item nav-link">Courses</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu bg-light m-0">
-                        <a href="feature" class="dropdown-item">Features</a>
-                        <a href="appointment" class="dropdown-item">Appointment</a>
-                        <a href="team" class="dropdown-item">Our Team</a>
-                        <a href="testimonial" class="dropdown-item">Testimonial</a>
-                        <a href="404" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
-                <a href="contact" class="nav-item nav-link">Contact</a>-->
             </div>
-            <a href="login" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">LOGIN<i class="fa fa-solid fa-lock ms-3"></i></a>
+            <a href="register" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Create account?<i class="fa fa-solid fa-lock ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -116,34 +109,139 @@
                 
                 <h1 class="display-6 text-center mb-4">LOG IN</h1>
 
-                <form onsubmit="event.prer" method = "post">
+                <form name="lform" id="lform" onsubmit="event.preventDefault();  loginvalid()" method="post">
                     <div class="row g-4">
                         <div class="col-sm-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control border-0 bg-light" name="user_n_m_e"  id="gname" placeholder="Gurdian Name">
+                                <input type="text" class="form-control border-0 bg-light" name="user_n_m_e"  id="user_n_m_e" placeholder="Gurdian Name">
                                 <label for="gname">UserName/Email/Conact Num</label>
                             </div>
+                            <div class="error" id="nameErr"></div>
                         </div>
 
                         <div class="col-sm-12">
                             <div class="form-floating">
-                                <input type="password" class="form-control border-0 bg-light" name="password" id="gname" placeholder="Gurdian Name">
+                                <input type="password" class="form-control border-0 bg-light" name="password" id="password" placeholder="Gurdian Name">
                                 <label for="gname">Password</label>
                             </div>
+                            <div class="error" id="passwordErr"></div>
                         </div>
                         
-                        <div class="col-sm-12">
-                            <div class="form-floating" >
-                                <a href = "forgotpass" >Forgot Password</a>
-                            </div>
+                        <div class="check">
+                            <input type="checkbox" name="" id="rember"  />
+                            <label for="rember">Remember me?</label>
                         </div>
-
+                        
                         <div class="col-12">
                             <button class="btn btn-primary w-100 py-3" type="sumbit" value="login"  name="login">Log IN</button>
                         </div>
-
+                        
+                        <div class="col-sm-12">
+                            <div class="form-floating d-flex align-items-end flex-column mt-0" >
+                                <a href = "forgotpass" ><u>Forgot Password?</u></a>
+                            </div>
+                        </div>
                     </div>
                 </form>
+
+                <script>
+                    
+                    // Defining a function to display error message
+                    function printError(elemId, hintMsg) {
+                        document.getElementById(elemId).innerHTML = hintMsg;
+                    }
+                    
+
+                    function loginvalid(){
+                        // Retrieving the values of form elements 
+                        var user_n_m_e = document.lform.user_n_m_e.value;
+                        var Password = document.lform.password.value;
+        
+                        // Defining error variables with a default value
+                        var nameErr = passwordErr  = true;
+                        
+                        // Validate name
+                        if(user_n_m_e == "") {
+                            printError("nameErr", "Please enter your name email or contact Number");
+                        } else {
+                            printError("nameErr", "");
+                            nameErr = false;
+                        }
+                        
+        
+                        // Validate Password
+                        if(Password == "") {
+                            printError("passwordErr", "Please enter your password");
+                        } else {
+                            printError("passwordErr", "");
+                            passwordErr = false;
+                        }
+                            
+
+                        // Prevent the form from being submitted if there are any errors
+                        if((nameErr || passwordErr) == true){
+                            return false;
+                        } else {
+                            login(); 
+                        }
+                    };
+
+                    function login(){
+                        var result = {};
+
+                        $.each($('#lform').serializeArray(), function () {
+                            result[this.name] = this.value;
+                        });
+
+                        // console.log(result);
+
+                        fetch("http://localhost/php_lec_tops/php/lec_27/22_API/login",{
+                        method: 'POST',
+                        headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(result)
+                        }).then((response)=>response.json()).then((result)=> {
+    
+                            if(result['Code'] == 1){
+
+                                //sesssion set api
+
+                                fetch("http://localhost/php_lec_tops/php/lec_27/MVC_DY_API/session",{
+                                method: 'POST',
+                                headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(result['Data'])
+                                }).then((response)=>response.json()).then((sessionresult)=> {
+                                    
+                                    if(sessionresult == "true"){
+                                        alert("welcome");
+                                    }else{
+                                        alert("try agin");
+                                    }
+                                    
+                                })
+                              
+
+                                if(result['Data'][0] != ""){
+                                    
+                                    if(result['Data'][0]['id'] == 1){
+                                        window.location.href="admindashboard"
+                                    }else{
+                                        window.location.href="home"
+                                    }
+                                }else{
+                                    window.location.href="login"
+                                }
+                            }else{
+                                alert("Invalid User");
+                            } 
+                        })
+                    };
+                </script>
             </div>
         </div>
     </div>

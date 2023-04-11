@@ -121,9 +121,9 @@
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 
-                <h1 class="display-6 text-center mb-4">REGISTRE Yashpal1@</h1>
+                <h1 class="display-6 text-center mb-4">REGISTRE</h1>
 
-                <form name="rform" id="rform" onsubmit="event.preventDefault(); return validateForm()" method="post">
+                <form name="rform" id="rform" onsubmit="event.preventDefault();  validateForm()" method="post">
                     <div class="row g-3">
                         <div class="col-sm-6">
                             <div class="form-floating">
@@ -158,6 +158,7 @@
                                 <input type="password" class="form-control border-0 bg-light" id="Password" name ="Password" placeholder="Gurdian Password"  >
                                 <label for="Password">Password</label>
                             </div>
+                            <div style="padding-top: 10px"><input type="checkbox" onclick="showpassword()">Show Password</div>
                             <div class="error" id="passwordErr" ></div>
                         </div>
                         <div class="col-sm-6">
@@ -167,23 +168,29 @@
                             </div>
                             <div class="error" id="Confirm_PasswordErr"></div>
                         </div>
-
-                        <div class="check">
-                            <input type="checkbox" name="" id="rember"  />
-                            <label for="rember">Remember me?</label>
-                        </div>
                        
-                        <div class="col-sm-12" >
-                            <div class="form-floating" >
-                                <a href = "login" >Allready Register? Click here</a>
-                            </div>
-                        </div>
                         <div class="col-12">
                             <button class="btn btn-primary w-100 py-3" type="sumbit" value="register"  name="register">Submit</button>
+                        </div>
+                        <div class="col-sm-12" >
+                            <div class="form-floating" >
+                                <a href = "login" ><u>Allready Register? Click here</u></a>
+                            </div>
+
                         </div>
                     </div>
                 </form>
                 <script>
+                    
+                function showpassword() {
+                    var x = document.getElementById("Password");
+                    if (x.type === "password") {
+                        x.type = "text";
+                    } else {
+                        x.type = "password";
+                    }
+                    }
+                    
                 // Defining a function to display error message
                 function printError(elemId, hintMsg) {
                     document.getElementById(elemId).innerHTML = hintMsg;
@@ -323,7 +330,7 @@
                             window.location.href="login"
                         }
                     })
-                }
+                };
             </script>
             </div>
         </div>
