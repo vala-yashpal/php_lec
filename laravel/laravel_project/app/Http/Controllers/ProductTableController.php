@@ -12,9 +12,10 @@ class ProductTableController extends Controller
      */
     public function index(productTable $productTable)
     {
-        $productdata = $productTable->get();
+        // $data = array("test"=>"somthing");
+        // return view('listallproducts',compact('data'));
 
-        // dd($productdata);
+        $productdata = $productTable->get();
         return view('listallproducts',compact('productdata'));
     }
 
@@ -31,16 +32,25 @@ class ProductTableController extends Controller
      */
     public function store(Request $request,productTable $productTable)
     {
+        
         $destinationPath = 'images';
         $myimage = $request->product_image->getClientOriginalName();
         $request->product_image->move(public_path($destinationPath), $myimage);
-            $productTable-> product_title =$request->product_title;
-            $productTable->product_price = $request->product_price;
-            $productTable->product_description = $request->product_description;
-            $productTable->product_qunatity= $request->product_qunatity;
-            $productTable->created_at = date("Y-m-d H:i:s");
-            $productTable->product_image = $request->product_image; 
-            $productTable->save();
+    
+        $saveproductdata =array("product_title"=>"$request->product_title","product_price"=>"$request->product_price","product_description" =>"$request->product_description","product_qunatity" =>"$request->product_qunatity","created_at" => date("Y-m-d H:i:s"),"product_image" => "$myimage"); 
+        dd($saveproductdata);
+        $productTable->productsave($saveproductdata);
+        // $addproductdata = productTable::productsave($saveproductdata);
+        // return redirect('products')->with('saveproduct-status', 'record added Successfully!');
+
+        // $productTable-> product_title =$request->product_title;
+        // $productTable->product_price = $request->product_price;
+        // $productTable->product_description = $request->product_description;
+        // $productTable->product_qunatity = $request->product_qunatity;
+        // $productTable->created_at = date("Y-m-d H:i:s");
+        // $productTable->product_image = $myimage; 
+        // $productTable->save();
+        // return redirect('products')->with('saveproduct-status', 'record added Successfully!');
     }
 
     /**
@@ -54,17 +64,35 @@ class ProductTableController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(productTable $productTable)
+    public function edit($id,productTable $productTable)
     {
-        //
+         // dd("called update ".$id);
+         $productById = $productTable::find($id);
+
+         // dd($productById);
+         return view('addnewproduct',compact('productById')); 
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, productTable $productTable)
+    public function update($id,Request $request, productTable $productTable)
     {
-        //
+        
+        $productfind = $productTable::find($id);
+        $updateprodata = $request->except(['_token','btn-save']);
+
+        // dd($updateprodata);
+
+        foreach ($updateprodata as $key => $value){
+             echo "$key => $value";
+
+            $productfind->$key = $value;
+        }
+        $productfind->save();
+        return redirect('products')->with('update-status', 'record updated!');
+
+        // dd("called update $productfind");
     }
 
     /**
@@ -72,6 +100,13 @@ class ProductTableController extends Controller
      */
     public function destroy($id,productTable $productTable)
     {
-        dd($id);
+        // dd($id);
+        $productById = $productTable::find($id); 
+
+        $productById->delete($id);
+        
+        // return redirect("products");
+        return redirect('products')->with('status', 'record Delete Successfully!');
+
     }
 }

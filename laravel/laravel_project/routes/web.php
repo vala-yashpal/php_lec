@@ -30,16 +30,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::view('/addproduct','addnewproduct');
+
+Route::post('/saveproduct',[App\Http\Controllers\ProductTableController::class, 'store']);
+
 // Route::view('/products','listallproducts');
 Route::get('/products',[App\Http\Controllers\ProductTableController::class, 'index']);
 
-Route::get('/delete/{id}',[App\Http\Controllers\ProductTableController::class, 'destroy']);
+Route::get('/editproduct/{id}',[App\Http\Controllers\ProductTableController::class, 'edit']);
 
-Route::view('/addproduct','addnewproduct');
+Route::post('/updateproduct/{id}',[App\Http\Controllers\ProductTableController::class, 'update']);
+
+Route::get('/deleteproduct/{id}',[App\Http\Controllers\ProductTableController::class, 'destroy']);
+
 
 // Route::post('/saveproduct',[App\Http\Controllers\productcontroller::class, 'index']);
 
-Route::post('/saveproduct',[App\Http\Controllers\ProductTableController::class, 'store']);
 
 
 
