@@ -43,12 +43,17 @@ Route::post('/updateproduct/{id}',[App\Http\Controllers\ProductTableController::
 
 Route::get('/deleteproduct/{id}',[App\Http\Controllers\ProductTableController::class, 'destroy']);
 
+Route::any('/eloquentrelation',[App\Http\Controllers\CommentController::class, 'index']);
 
-// Route::post('/saveproduct',[App\Http\Controllers\productcontroller::class, 'index']);
+Route::any('/adminedashbord',[App\Http\Controllers\adminControlller::class, 'create']);
 
+Route::any('/alluser',[App\Http\Controllers\adminControlller::class, 'index']);
 
+// Route::middleware('auth')->group(function() {
+//     Route::any('/adminedashbord',[App\Http\Controllers\adminControlller::class, 'index']);
+// });
 
-
+    // Route::post('/saveproduct',[App\Http\Controllers\productcontroller::class, 'index']);
     // Route::get('/uri',[Controller::class,'method']);         //get data from serve and show in blade page
     // Route::post('/uri',[Controller::class,'method']);        //send HTML data to the serve
     // Route::patch('/uri{id}',[Controller::class,'method']);   //get data with id (select for update)

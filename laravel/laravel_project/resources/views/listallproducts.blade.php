@@ -24,15 +24,15 @@
                             <button type="button" class="btn-close" id="myBtn" data-bs-dismiss="alert"></button>
                         </div>
                     @endif
-                     @if (session('update-status'))
+                    @if (session('update-status'))
                         <div class="alert alert-success alert-dismissible fade show">
                             <strong id="myAlert">alert!</strong> {{ session('update-status') }}
                             <button type="button" class="btn-close" id="myBtn" data-bs-dismiss="alert"></button>
                         </div>
                     @endif
-                    @if (session('status'))
+                    @if (session('delete-status'))
                         <div class="alert alert-danger alert-dismissible fade show">
-                            <strong id="myAlert">alert!</strong> {{ session('status') }}
+                            <strong id="myAlert">alert!</strong> {{ session('delete-status') }}
                             <button type="button" class="btn-close" id="myBtn" data-bs-dismiss="alert"></button>
                         </div>
                     @endif 
@@ -54,7 +54,7 @@
                                     <td>{{ $product->product_price }}</td>
                                     <td>{{ $product->product_qunatity }}</td>
                                     <td>{{ $product->product_description }}</td>
-                                    <td><img src="images/{{ $product->product_image }}" width="100px" alt="" width="100px">{{ $product->product_image }}</td>
+                                    <td><img src="images/{{ $product->product_image }}" width="100px" alt="" width="100px"></td>
                                     <td>
                                         <a class="btn btn-primary " href="editproduct/{{ $product->id }}">edit</a> 
                                         <a class="btn btn-danger" href="deleteproduct/{{ $product->id }}  ">delete</a>

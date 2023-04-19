@@ -8,19 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class productTable extends Model
 {
     use HasFactory;
-    public function productsave($saveproductdata){
+
+    public function productsave($saveproductdata,$productTable){
 
         // dd($saveproductdata);
+        // $productTable= new \stdClass();
 
         foreach ($saveproductdata as $key => $value){
-            // echo "$key => $value";
-
-           $productTable->$key = $value;
-       }
-       dd($productTable);
-    //$productTable->save();
-
-       return redirect('products')->with('saveproduct-status', 'record added Successfully!');
+            $productTable->$key = $value;
+        }
+        //    dd($productTable);
+        //    dd("called");
+        return $productTable->save();
     }
 
 }

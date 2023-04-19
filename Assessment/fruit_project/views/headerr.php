@@ -8,8 +8,9 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="<?php echo $this->base_url;?>/css/open-iconic-bootstrap.min.css">
+	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="<?php echo $this->base_url;?>/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo $this->base_url;?>/css/animate.css">
     
     <link rel="stylesheet" href="<?php echo $this->base_url;?>/css/owl.carousel.min.css">
@@ -52,31 +53,38 @@
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
+		
 	      <a class="navbar-brand" href="home">Vegefoods</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
-
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="home" class="nav-link">Home</a></li>
-	          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="shop">Shop</a>
-              	<a class="dropdown-item" href="wishlist">Wishlist</a>
-                <a class="dropdown-item" href="single_product">Single Product</a>
-                <a class="dropdown-item" href="cart">Cart</a>
-                <a class="dropdown-item" href="checkout">Checkout</a>
-              </div>
-            </li>
-	          <li class="nav-item"><a href="about" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta cta-colored"><a href="cart" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
-
-	        </ul>
-	      </div>
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item <?php if(isset($active)){ echo $active;} ?>"><a href="home" class="nav-link">Home</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+						<div class="dropdown-menu" aria-labelledby="dropdown04">
+							<a class="dropdown-item " href="shop">Shop</a>
+							<a class="dropdown-item" href="wishlist">Wishlist</a>
+							<a class="dropdown-item" href="single_product">Single Product</a>
+							<a class="dropdown-item" href="cart">Cart</a>
+							<a class="dropdown-item" href="checkout">Checkout</a>
+						</div>
+					</li>
+					<li class="nav-item"><a href="about" class="nav-link">About</a></li>
+					<li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
+					<li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
+					<li class="nav-item cta cta-colored"><a href="cart" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+				</ul>
+			</div>
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<a href="register">
+						<!-- <span class="bi bi-universal-access-circle">account</span> -->
+						<i class="bi bi-person-plus" style="font-size:21px;"></i>
+					</a>
+				</ul>
+			</div>
 	    </div>
 	  </nav>
     <!-- END nav -->

@@ -76,6 +76,12 @@
                         include_once("views/footer.php");
                     break;
 
+                    case '/register':
+                        include_once("views/headerr.php");
+                        include_once("views/register.php");
+                        include_once("views/footer.php");
+                    break;
+
                     default:
                         header("location:home");
                     break;
