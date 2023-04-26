@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::view('/addpro','addnewproduct1');
+
 Route::view('/addproduct','addnewproduct');
 
 Route::post('/saveproduct',[App\Http\Controllers\ProductTableController::class, 'store']);
@@ -45,9 +47,11 @@ Route::get('/deleteproduct/{id}',[App\Http\Controllers\ProductTableController::c
 
 Route::any('/eloquentrelation',[App\Http\Controllers\CommentController::class, 'index']);
 
-Route::any('/adminedashbord',[App\Http\Controllers\adminControlller::class, 'create']);
+Route::any('/adminedashbord',[App\Http\Controllers\adminControlller::class, 'index']);
 
-Route::any('/alluser',[App\Http\Controllers\adminControlller::class, 'index']);
+Route::any('/allproduct',[App\Http\Controllers\adminControlller::class, 'products']);
+
+Route::view('/ajax','ajaxview');
 
 // Route::middleware('auth')->group(function() {
 //     Route::any('/adminedashbord',[App\Http\Controllers\adminControlller::class, 'index']);

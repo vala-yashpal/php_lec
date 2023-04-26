@@ -72,7 +72,6 @@ class ProductTableController extends Controller
     {
         // dd("called update ".$id);
         $productById = $productTable::find($id);
-
         // dd($productById);
         return view('addnewproduct',compact('productById')); 
     }

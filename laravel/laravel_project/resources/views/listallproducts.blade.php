@@ -7,7 +7,7 @@
 
         <div class="flex justify-between h-16">
             <div class="max-w-7xl ml-a sm:px-6 lg:px-8">
-                <a href="addproduct" class="btn btn-primary ">add product</a>
+                <a href="addpro" class="btn btn-primary ">add product</a>
             </div>
         </div>
     </x-slot>

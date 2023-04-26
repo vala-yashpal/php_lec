@@ -40,9 +40,7 @@
 
     <!-- Main JS -->
     <script src="../assets/js/main.js"></script>
-   
 
-
-   
+    @stack('custom-scripts')
   </body>
 </html>

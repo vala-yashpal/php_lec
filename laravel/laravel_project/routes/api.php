@@ -17,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::any('/getallproductdata',[App\Http\Controllers\adminControlller::class, 'productdataapi']);
+
+Route::any('/getproductbyid/{id}',[App\Http\Controllers\adminControlller::class, 'getproductbyidapi']);
+
+Route::any('/addproduct',[App\Http\Controllers\adminControlller::class, 'store']);
+
+Route::any('/updatepoduct/{id}',[App\Http\Controllers\ProductTableController::class, 'update']);
+

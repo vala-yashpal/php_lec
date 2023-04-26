@@ -1,3 +1,3 @@
 @include('layouts.adminapp')
-@include('layouts.startapp')
+@include('layouts.adminedashbordapp')
 @include('layouts.adminfooterapp')

@@ -49,7 +49,7 @@
                             $.each($('#myForm').serializeArray(), function () {
                                 result[this.name] = this.value;
                             });
-                            // console.log(result);
+                            console.log(result);
                             fetch("http://localhost/php_lec_tops/php/lec_27/22_API/inserttodo",{
                             method: 'POST',
                             headers: {
@@ -117,7 +117,7 @@
 
                              fetch(url).then((response)=>response.json()).then((result)=>{
                                 // console.log(result.Data[0].todo_title);
-                                document.getElementById('todoitems').value = result.Data[0].todo_title
+                                document.getElementById('todoitems').value = result.Data[0].todo_title;
                                 drpVal = ["pending","Active","Completed"];
 
                                 drpOption = ""
