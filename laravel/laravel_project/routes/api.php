@@ -24,5 +24,8 @@ Route::any('/getproductbyid/{id}',[App\Http\Controllers\adminControlller::class,
 
 Route::any('/addproduct',[App\Http\Controllers\adminControlller::class, 'store']);
 
-Route::any('/updatepoduct/{id}',[App\Http\Controllers\ProductTableController::class, 'update']);
+Route::any('/updatepoduct/{id}',[App\Http\Controllers\adminControlller::class, 'update']);
+
+Route::any('/deleteproduct/{id}',[App\Http\Controllers\adminControlller::class, 'destroy']);
+
 

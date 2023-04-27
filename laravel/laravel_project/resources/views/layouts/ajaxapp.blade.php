@@ -1,8 +1,15 @@
 <div class="container-xxl flex-grow-1 container-p-y">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('ajax ') }}
-        </h2>
 
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+            
+            <div class="d-flex flex-row-reverse p-2 pb-5">
+                <input class="btn btn-danger" type="button" value="alert message" name="alertmessage" id="alertmessage">
+            </div>
+
+        </h2>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -57,7 +64,42 @@
                             </tbody>
                         </table>
                         @push('custom-scripts')
+                        
                         <script>
+                            
+                            $(document).ready(function(){
+                                $("#alertmessage").click(function(){
+                                    // alert("delete btn");
+                                    swal("delete btn");
+                                    // swal({
+                                    //     title : "Alert Message Title",
+                                    //     text : "Here is the alert Message information.",
+                                    //     type : 'info',
+                                    //     showCancelButoonClass = "btn btn-primary",
+                                    //     confirmButtonText : 'OK'
+                                    // });
+
+                                    // swal({
+                                    //         title : "Confirmation ?",
+                                    //         text : "Are You sure you want to delete record?",
+                                    //         type : 'warning',
+                                    //         showCancelButton : true,
+                                    //         confirmButtonClass : "btn-danger",
+                                    //         confirmButtonText : 'yes, plese Delete it!',
+                                    //         cancelButoonText :"NO, please don't delete",
+                                    //         closeOnConfirm : false,
+                                    //         closeonCancel : false
+                                    //     }, 
+                                    //     function(isConfirm) {
+                                    //         if(isConfirm) {
+                                    //             swal("Delete!","Data has been successfully delete.","success");
+                                    //         }else{
+                                    //             swal("Cancelled","your data is safe now.","error");
+                                    //         }
+                                    //     });
+
+                                });
+                            });
 
                             function getprodutcs(){
                                 fetch("http://localhost:8000/api/getallproductdata").then((returndata)=> returndata.json()).then((response)=>{
@@ -138,14 +180,33 @@
                                 },
                                 body: JSON.stringify(result)
                                 }).then((response)=>response.json()).then((result)=> {
-                                    // if(result != ""){
-                                    // var myForm = document.getElementById('myForm');
-                                    // document.getElementById("btn-save").value = "submit";
-                                    // myForm.setAttribute('onsubmit',`event.preventDefault(); saveproduct()`);
-                                    // }
-                                    console.log(result);
+                                    if(result != ""){
+                                    var myForm = document.getElementById('myForm');
+                                    document.getElementById("btn-save").value = "submit";
+                                    myForm.setAttribute('onsubmit',`event.preventDefault(); saveproduct()`);
+                                    }
+                                    getprodutcs();
                                 })
                             }
+
+                            function deleteproduct(id){
+                                // console.log("delete");
+                            fetch("http://localhost:8000/api/deleteproduct/"+id,{
+                                method: 'POST',
+                                headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                                }}).then((response)=>response.json()).then((result)=> {
+
+                                    console.log(result);
+                                if(result == 1){
+                                    alert("delete product successfuly!");
+                                }
+                                    getprodutcs();
+                                    
+                                })
+                            }
+
                         </script>
                         @endpush
                     </div>

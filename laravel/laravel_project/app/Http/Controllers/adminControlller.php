@@ -57,6 +57,7 @@ class adminControlller extends Controller
      */
     public function store(Request $request,productTable $productTable)
     {
+    
         // dd($request->all());
         // $destinationPath = 'images';
         // $myimage = $request->product_image->getClientOriginalName();
@@ -67,6 +68,12 @@ class adminControlller extends Controller
         $productsave = $productTable->productsave($saveproductdata,$productTable);
 
             return $productsave;
+
+            // if($productsave){
+            //      return $productsave->with('saveproduct-status', 'record added Successfully!');
+            // }else{
+            //     return $productsave->with('saveproduct-status', 'some error while inserting!');
+            // }
     }
 
     /**
@@ -90,7 +97,6 @@ class adminControlller extends Controller
      */
     public function update( $id,Request $request,productTable $productTable )
     {
-        dd("callrd");
         $productfind = $productTable::find($id);
 
         // if($request->product_image){      
@@ -111,16 +117,22 @@ class adminControlller extends Controller
         }
         $updateproduct = $productfind->save();
 
-        echo $updateproduct;
-
-
+        return $updateproduct;
+        // return $updateproduct->with('update-status', 'record updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id,productTable $productTable)
     {
-        //
+        // dd("called".$id);
+        $productById = $productTable::find($id); 
+
+        $deleteproduct = $productById->delete($id);
+        
+        return $deleteproduct;
+        // return $deleteproduct->with('delete-status', 'record Delete Successfully!');
+
     }
 }

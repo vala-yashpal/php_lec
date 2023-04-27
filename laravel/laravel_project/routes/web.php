@@ -53,6 +53,8 @@ Route::any('/allproduct',[App\Http\Controllers\adminControlller::class, 'product
 
 Route::view('/ajax','ajaxview');
 
+Route::view('/macaroview','macaroview');
+
 // Route::middleware('auth')->group(function() {
 //     Route::any('/adminedashbord',[App\Http\Controllers\adminControlller::class, 'index']);
 // });

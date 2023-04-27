@@ -175,10 +175,11 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-without-menu.html" class="menu-link">
-                    <div data-i18n="Without menu">a</div>
+                  <a href="macaroview" class="menu-link">
+                    <div data-i18n="Without menu">macro example</div>
                   </a>
                 </li>
+
               </ul>
             </li>
           </ul>
