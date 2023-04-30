@@ -4,9 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\productTable;
 use Illuminate\Http\Request;
+use App\Mail\MyTestMail;
+use PDF;
+use Mail;
 
 class ProductTableController extends Controller
 {
+
+    public function sendmail()
+    {
+        $data["email"] = "valayashpal00@gmail.com";
+        $data["title"] = "From testing mail";
+        $data["body"] = "This is Demo";
+    
+        $pdf = PDF::loadView('emails.myTestMail', $data);
+        $data["pdf"] = $pdf;
+  
+        Mail::to($data["email"])->send(new MyTestMail($data));
+    
+        dd('Mail sent successfully');
+    }
+
     /**
      * Display a listing of the resource.
      */

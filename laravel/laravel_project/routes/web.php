@@ -55,6 +55,18 @@ Route::view('/ajax','ajaxview');
 
 Route::view('/macaroview','macaroview');
 
+
+// Route::get('sendmail', function () {
+//     $details = [
+//         'title' => 'Mail from yashpaltest@gmail.com',
+//         'body' => 'This is for testing email using smtp'
+//     ];
+//     \Mail::to('valayashpal00@gmail.com')->send(new \App\Mail\MyTestMail($details));
+
+//     dd("Email is Sent.");
+// });
+Route::get('sendmail', [App\Http\Controllers\ProductTableController::class, 'sendmail']);
+
 // Route::middleware('auth')->group(function() {
 //     Route::any('/adminedashbord',[App\Http\Controllers\adminControlller::class, 'index']);
 // });

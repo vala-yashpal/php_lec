@@ -179,7 +179,21 @@
                     <div data-i18n="Without menu">macro example</div>
                   </a>
                 </li>
+              </ul>
+            </li>
 
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-envelope"></i>
+                <div data-i18n="Layouts">Email</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="sendmail" class="menu-link">
+                    <div data-i18n="Without menu">Email</div>
+                  </a>
+                </li>
               </ul>
             </li>
           </ul>
