@@ -67,6 +67,10 @@ Route::view('/macaroview','macaroview');
 // });
 Route::get('sendmail', [App\Http\Controllers\ProductTableController::class, 'sendmail']);
 
+// Route::any('testTrait', [App\Http\Controllers\ProductTableController::class, 'testTrait']);
+
+Route::view('/uploadimagejavascript','uploadimage');
+
 // Route::middleware('auth')->group(function() {
 //     Route::any('/adminedashbord',[App\Http\Controllers\adminControlller::class, 'index']);
 // });

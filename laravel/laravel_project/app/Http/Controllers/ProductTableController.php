@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\productTable;
+use App\Traits\ImageTrait;
 use Illuminate\Http\Request;
 use App\Mail\MyTestMail;
 use PDF;
@@ -10,6 +11,17 @@ use Mail;
 
 class ProductTableController extends Controller
 {
+    use ImageTrait;
+    
+    public function testTrait(Request $request,productTable $productTable)
+    {
+        $input['image'] = $this->verifyAndUpload($request, 'image', 'images');
+
+        // dd("inside   trait controller ");
+        // return $input['image'];
+        echo "( api for image upload and with the example of trait image uploade store) ";
+    
+    }
 
     public function sendmail()
     {

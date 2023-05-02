@@ -28,4 +28,6 @@ Route::any('/updatepoduct/{id}',[App\Http\Controllers\adminControlller::class, '
 
 Route::any('/deleteproduct/{id}',[App\Http\Controllers\adminControlller::class, 'destroy']);
 
+Route::any('testTrait', [App\Http\Controllers\ProductTableController::class, 'testTrait']);
+
 
