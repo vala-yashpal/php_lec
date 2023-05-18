@@ -71,6 +71,8 @@ Route::get('sendmail', [App\Http\Controllers\ProductTableController::class, 'sen
 
 Route::view('/uploadimagejavascript','uploadimage');
 
+Route::get('test-email', [App\Http\Controllers\JobController::class, 'enqueue']);
+
 // Route::middleware('auth')->group(function() {
 //     Route::any('/adminedashbord',[App\Http\Controllers\adminControlller::class, 'index']);
 // });

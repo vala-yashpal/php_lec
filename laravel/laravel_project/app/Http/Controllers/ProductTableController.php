@@ -144,8 +144,9 @@ class ProductTableController extends Controller
     {
         // dd($id);
         $productById = $productTable::find($id); 
-
-        $productById->delete($id);
+            // dd($productById->product_image);
+            unlink('images/'.$productById->product_image);
+            $productById->delete($id);
         
         // return redirect("products");
         return redirect('products')->with('delete-status', 'record Delete Successfully!');
