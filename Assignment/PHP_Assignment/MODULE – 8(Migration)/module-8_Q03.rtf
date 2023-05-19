@@ -1,0 +1,435 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Calibri;}{\f2\fnil\fcharset0 Calibri Light;}{\f3\fnil Calibri Light;}}
+{\colortbl ;\red0\green0\blue0;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\fi720\li1440\sa160\sl259\slmult0\qj\f0\fs32\lang9 MODULE \f1\endash\f0  8(Migration)\par
+
+\pard\sa160\sl259\slmult0\qj\par
+
+\pard\sa160\sl259\slmult0\ul\b\fs36 Q-3:- Apply Curd Operation through Query Builder for Employee Management:\ulnone\b0\fs22\par
+
+\pard\li360\sb100\sa100\sl240\slmult1\cf1\f2 First of all, download or install laravel 9 new setup. So, open the terminal and type the following command to install the new laravel 9 app into your machine:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 composer create-project --prefer-dist laravel/laravel:^9.0 laravel-9-crud\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 Step 2 \f3\endash\f2  Setup Database with App\par
+Setup database with your downloaded/installed laravel app. So, you need to find the .env file and setup database details as follows:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 DB_CONNECTION=mysql\par
+DB_HOST=127.0.0.1\par
+DB_PORT=3306\par
+DB_DATABASE=database-name\par
+DB_USERNAME=database-user-name\par
+DB_PASSWORD=database-password\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 Step 3 \f3\endash\f2  Create Company Model & Migration For CRUD App\par
+Open again your command prompt. And run the following command on it. To create model and migration file for form:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 php artisan make:model Company -m\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 After that, open\~company\~migration\~\~file inside\~laravel-9-crud/database/migrations/\~directory. And then update the function up() with the following code:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 public function up()\par
+\{\par
+Schema::create('companies', function (Blueprint $table) \{\par
+$table->id();\par
+$table->string('name');\par
+$table->string('email');\par
+$table->string('address');\par
+$table->timestamps();\par
+\});\par
+\}\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 app/Models/Company.php\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <?php\par
+namespace App\\Models;\par
+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\par
+use Illuminate\\Database\\Eloquent\\Model;\par
+class Company extends Model\par
+\{\par
+use HasFactory;\par
+protected $fillable = ['name', 'email', 'address'];\par
+\}\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 Then, open again command prompt and run the following command to create tables in the database:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 php artisan migrate\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 Read Also:\~{{\field{\*\fldinst{HYPERLINK "https://techvblogs.com/blog/set-up-free-self-hosted-email-marketing-with-mautic"}}{\fldrslt{\ul\cf2\cf2\ul How to set up Free self-hosted Email marketing with }}}}{\f2\fs22{\field{\*\fldinst{HYPERLINK "https://techvblogs.com/blog/set-up-free-self-hosted-email-marketing-with-mautic"}}{\fldrslt{\ul\cf2\cf2\ul Mautic}}}}{\cf1\ulnone\f2\fs22{\field{\*\fldinst{HYPERLINK "https://techvblogs.com/blog/set-up-free-self-hosted-email-marketing-with-mautic"}}{\fldrslt{\ul\cf2\cf2\ul  (60k Emails per month!)}}}}\cf1\ulnone\f2\fs22\par
+Step 4 \f3\endash\f2  Create Company\f3\~\f2 Controller By Artisan Command\par
+Create a controller by using the following command on the command prompt to create a controller file:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 php artisan make:controller CompanyController\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 After that, visit app/Http/controllers and open the CompanyController.php file. And update the following code into it:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <?php\par
+namespace App\\Http\\Controllers;\par
+use App\\Models\\Company;\par
+use Illuminate\\Http\\Request;\par
+class CompanyController extends Controller\par
+\{\par
+/**\par
+Display a listing of the resource.\par
+*\par
+@return \\Illuminate\\Http\\Response\par
+*/\par
+public function index()\par
+\{\par
+$companies = Company::orderBy('id','desc')->paginate(5);\par
+return view('companies.index', compact('companies'));\par
+\}\par
+/**\par
+Show the form for creating a new resource.\par
+*\par
+@return \\Illuminate\\Http\\Response\par
+*/\par
+public function create()\par
+\{\par
+return view('companies.create');\par
+\}\par
+/**\par
+Store a newly created resource in storage.\par
+*\par
+@param  \\Illuminate\\Http\\Request  $request\par
+@return \\Illuminate\\Http\\Response\par
+*/\par
+public function store(Request $request)\par
+\{\par
+$request->validate([\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 'name' => 'required',\par
+'email' => 'required','address' => 'required',]);\par
+
+\pard\li405\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 Company::create($request->post());\par
+return redirect()->route('companies.index')->with('success','Company has been created successfully.');\par
+\}\par
+/**\par
+Display the specified resource.\par
+*\par
+@param  \\App\\company  $company\par
+@return \\Illuminate\\Http\\Response\par
+*/\par
+public function show(Company $company)\par
+\{\par
+return view('companies.show',compact('company'));\par
+\}\par
+/**\par
+Show the form for editing the specified resource.\par
+*\par
+@param  \\App\\Company  $company\par
+@return \\Illuminate\\Http\\Response\par
+*/\par
+public function edit(Company $company)\par
+\{\par
+return view('companies.edit',compact('company'));\par
+\}\par
+/**\par
+Update the specified resource in storage.\par
+*\par
+@param  \\Illuminate\\Http\\Request  $request\par
+@param  \\App\\company  $company\par
+@return \\Illuminate\\Http\\Response\par
+*/\par
+public function update(Request $request, Company $company)\par
+\{\par
+$request->validate([\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 'name' => 'required',\par
+'email' => 'required',\par
+'address' => 'required', \par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 ]);\par
+$company->fill($request->post())->save();\par
+return redirect()->route('companies.index')->with('success','Company Has Been updated successfully');\}\par
+/**\par
+Remove the specified resource from storage.\par
+*\par
+@param  \\App\\Company  $company\par
+@return \\Illuminate\\Http\\Response\par
+*/\par
+public function destroy(Company $company)\par
+\{\par
+$company->delete();\par
+return redirect()->route('companies.index')->with('success','Company has been deleted successfully');\par
+\}\par
+\}\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 Ste5 \f3\endash\f2  Create Routes\par
+Then create routes for laravel crud app. So, open the web.php file from the routes directory of laravel CRUD app. And update the following routes into the web.php file:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 use App\\Http\\Controllers\\CompanyController;\par
+Route::resource('companies', CompanyController::class);\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 Step 6 \f3\endash\f2  Create Blade Views File\par
+Create the directory and some blade view, see the following:\par
+Make Directory Name Companies\par
+index.blade.php\par
+create.blade.php\par
+edit.blade.php\par
+Create directory name\~companies\~inside the\~resources/views\~directory.\par
+Note that, create index.blade.php, create.blade.php, and edit.blade.php inside the companies directory. And update the following code into the following files:\par
+index.blade.php:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <!DOCTYPE html>\par
+<html lang="en">\par
+<head>\par
+<meta charset="UTF-8">\par
+<title>Laravel 9 CRUD Tutorial Example</title>\par
+<link rel="stylesheet" href="{{\field{\*\fldinst{HYPERLINK https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css }}{\fldrslt{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\ul0\cf0}}}}\f2\fs22 " >\par
+</head>\par
+<body>\par
+<div class="container mt-2">\par
+<div class="row">\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <div class="col-lg-12 margin-tb">\par
+<div class="pull-left">\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <h2>Laravel 9 CRUD Example Tutorial</h2>\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+<div class="pull-right mb-2">\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <a class="btn btn-success" href="\{\{ route('companies.create') \}\}"> Create Company</a>\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+</div>\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+@if ($message = Session::get('success'))\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <div class="alert alert-success">\par
+<p>\{\{ $message \}\}</p>\par
+</div>\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 @endif\par
+<table class="table table-bordered">\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <thead>\par
+<tr>\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <th>S.No</th>\par
+<th>Company Name</th>\par
+<th>Company Email</th>\par
+<th>Company Address</th>\par
+<th width="280px">Action</th>\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </tr>\par
+</thead>\par
+<tbody>\par
+@foreach ($companies as $company)\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <tr>\par
+<td>\{\{ $company->id \}\}</td>\par
+<td>\{\{ $company->name \}\}</td>\par
+<td>\{\{ $company->email \}\}</td>\par
+<td>\{\{ $company->address \}\}</td>\par
+<td>\par
+<form action="\{\{ route('companies.destroy',$company->id) \}\}" method="Post">\par
+
+\pard\li2520\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <a class="btn btn-primary" href="\{\{ route('companies.edit',$company->id) \}\}">Edit</a>\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 @csrf\par
+@method('DELETE')\par
+
+\pard\li2520\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <button type="submit" class="btn btn-danger">Delete</button>\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </form>\par
+</td>\par
+</tr>\par
+@endforeach\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </tbody>\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </table>\par
+\{!! $companies->links() !!\}\par
+</div>\par
+</body>\par
+</html>\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 create.blade.php:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <!DOCTYPE html>\par
+<html lang="en">\par
+
+\pard\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <head>\par
+<meta charset="UTF-8">\par
+<title>Add Company Form - Laravel 9 CRUD</title>\par
+<link rel="stylesheet" href="{{\field{\*\fldinst{HYPERLINK https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css }}{\fldrslt{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\ul0\cf0}}}}\f2\fs22 ">\par
+</head>\par
+<body>\par
+<div class="container mt-2">\par
+<div class="row">\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <div class="col-lg-12 margin-tb">\par
+<div class="pull-left mb-2">\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <h2>Add Company</h2>\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+<div class="pull-right">\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <a class="btn btn-primary" href="\{\{ route('companies.index') \}\}"> Back</a>\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+</div>\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+@if(session('status'))\par
+<div class="alert alert-success mb-1 mt-1">\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656\{\{ session('status') \}\}\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+@endif\par
+<form action="\{\{ route('companies.store') \}\}" method="POST" enctype="multipart/form-data">\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 @csrf\par
+<div class="row">\par
+<div class="col-xs-12 col-sm-12 col-md-12">\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <div class="form-group">\par
+<strong>Company Name:</strong>\par
+<input type="text" name="name" class="form-control" placeholder="Company Name">\par
+@error('name')\par
+<div class="alert alert-danger mt-1 mb-1">\{\{ $message \}\}</div>\par
+@enderror\par
+</div>\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+<div class="col-xs-12 col-sm-12 col-md-12">\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <div class="form-group">\par
+<strong>Company Email:</strong>\par
+<input type="email" name="email" class="form-control" placeholder="Company Email">\par
+@error('email')\par
+<div class="alert alert-danger mt-1 mb-1">\{\{ $message \}\}</div>\par
+@enderror\par
+</div>\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+<div class="col-xs-12 col-sm-12 col-md-12">\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <div class="form-group">\par
+<strong>Company Address:</strong>\par
+<input type="text" name="address" class="form-control" placeholder="Company Address">\par
+@error('address')\par
+<div class="alert alert-danger mt-1 mb-1">\{\{ $message \}\}</div>\par
+@enderror\par
+</div>\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+<button type="submit" class="btn btn-primary ml-3">Submit</button>\par
+</div>\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </form>\par
+</div>\par
+</body>\par
+</html>\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 edit.blade.php:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <!DOCTYPE html>\par
+<html lang="en">\par
+<head>\par
+<meta charset="UTF-8">\par
+<title>Edit Company Form - Laravel 9 CRUD Tutorial</title>\par
+<link rel="stylesheet" href="{{\field{\*\fldinst{HYPERLINK https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css }}{\fldrslt{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\ul0\cf0}}}}\f2\fs22 ">\par
+</head>\par
+<body>\par
+<div class="container mt-2">\par
+<div class="row">\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <div class="col-lg-12 margin-tb">\par
+<div class="pull-left">\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <h2>Edit Company</h2>\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+<div class="pull-right">\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <a class="btn btn-primary" href="\{\{ route('companies.index') \}\}" enctype="multipart/form-data">\par
+Back</a>\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+</div>\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+@if(session('status'))\par
+<div class="alert alert-success mb-1 mt-1">\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656\{\{ session('status') \}\}\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+@endif\par
+<form action="\{\{ route('companies.update',$company->id) \}\}" method="POST" enctype="multipart/form-data">\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 @csrf\par
+@method('PUT')\par
+<div class="row">\par
+<div class="col-xs-12 col-sm-12 col-md-12">\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <div class="form-group">\par
+<strong>Company Name:</strong>\par
+<input type="text" name="name" value="\{\{ $company->name \}\}" class="form-control"\par
+placeholder="Company name">\par
+@error('name')\par
+<div class="alert alert-danger mt-1 mb-1">\{\{ $message \}\}</div>\par
+@enderror\par
+</div>\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+<div class="col-xs-12 col-sm-12 col-md-12">\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <div class="form-group">\par
+<strong>Company Email:</strong>\par
+<input type="email" name="email" class="form-control" placeholder="Company Email"\par
+value="\{\{ $company->email \}\}">\par
+@error('email')\par
+<div class="alert alert-danger mt-1 mb-1">\{\{ $message \}\}</div>\par
+@enderror\par
+</div>\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+<div class="col-xs-12 col-sm-12 col-md-12">\par
+
+\pard\li1800\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 <div class="form-group">\par
+<strong>Company Address:</strong>\par
+<input type="text" name="address" value="\{\{ $company->address \}\}" class="form-control"\par
+placeholder="Company Address">\par
+@error('address')\par
+<div class="alert alert-danger mt-1 mb-1">\{\{ $message \}\}</div>\par
+@enderror\par
+</div>\par
+
+\pard\li1080\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </div>\par
+<button type="submit" class="btn btn-primary ml-3">Submit</button>\par
+</div>\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 </form>\par
+</div>\par
+</body>\par
+</html>\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 If you submit the add or edit form blank. So the error message will be displayed with the help of the code given below:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 @error('name')\par
+<div class="alert alert-danger mt-1 mb-1">\{\{ $message \}\}</div>\par
+@enderror\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 Step 7 \f3\endash\f2  Run Development Server\par
+In the last step, open a command prompt and run the following command to start the development server:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 php artisan serve\par
+
+\pard\li360\sb100\sa100\sl240\slmult1 Then open your browser and hit the following URL on it:\par
+
+\pard\li360\sl240\slmult1\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656 {\cf0{\field{\*\fldinst{HYPERLINK http://127.0.0.1:8000/companies }}{\fldrslt{http://127.0.0.1:8000/companies\ul0\cf0}}}}\f2\fs22\par
+
+\pard\sa160\sl259\slmult0\cf0\f0\fs36\par
+}
+ 
