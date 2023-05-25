@@ -26,39 +26,33 @@ class register extends Model
 
     public function login_user($logindata,$register){
 
-        //dd($logindata);
-        
-        // dd($logindata['email']);
-        $logdata = $register::select('*')->where('email', $logindata['email'])->get();
-
-        dd($logdata['password']);
-
-        // echo "vala";
-        // exit;   
-        // dd($logdata);
-
-
-
-        exit;
-
-        // if($logdata['email'] == $logindata['email']  && $logdata['password'] == $logindata['Password']){
-        //     $response['code'] = 1;
-        //     $response['data'] = $logdata;
-        //     $response['message'] = "successfull";
-        // }else{
-        //     $response['code'] = 0;
-        //     $response['data'] = 0;
-        //     $response['message'] = "error";
-        // }
-        // return $response;
-
         // dd($logindata);
-        // echo"<pre>";
-        // print_r($logndata);
-        // echo"</pre>";
+        // dd($logindata['email']);
+        // dd($logindata['Password']);
         // exit;
 
-        // return $logndata;
+        $logdata = $register::select('*')->where('email', $logindata['email'])->get();
+        
+        // dd($logdata);
+        // dd($logdata[0]['email']);
+        // dd($logdata[0]['password']);
+        // exit;
+
+        if( $logdata[0]['email'] === $logindata['email'] && $logdata[0]['password'] === $logindata['Password']){
+            $response['code'] = 1;
+            $response['data'] = $logdata[0];
+            $response['message'] = "successfull";
+        }else{
+            $response['code'] = 0;
+            $response['data'] = 0;
+            $response['message'] = "error";
+        }
+        return $response;
+
+        // echo"<pre>";
+        // print_r($response);
+        // echo"</pre>";
+        // exit;
     }
 
 }

@@ -852,7 +852,6 @@
                             };
 
                             function login(){
-                               
                                 var result = {};
 
                                 $.each($('#rform').serializeArray(), function () {
@@ -867,13 +866,16 @@
                                 },
                                 body: JSON.stringify(result)
                                 }).then((response)=>response.json()).then((result)=> {
-                                    console.log(result);
-                                    if(result == 1){
-                                        alert("registration success")
-                                        window.location.href="/log";
+
+                                    // console.log(result);
+                                    // return false;
+
+                                    if(result['code'] == 1){
+                                        alert("login success")
+                                        window.location.href="/list_alluser";
 
                                     }else{
-                                        alert("registration Error")
+                                        alert("login Error")
                                         window.location.href="/regis";
                                     }
                                 })

@@ -45,27 +45,18 @@ class RegisterController extends Controller
 
     public function log_in(Request $request,register $register)
     {
-        
-
         // $user = $register::select{"email"=> $request->email,"password" =>$request->Password}
-
         // echo"<pre>";
         // print_r($user);
         // echo"</pre>";
         // exit;
-
-        // dd($request);
-
         $logindata =array("email"=> $request->email,"Password" =>$request->Password); 
-
         // dd($logindata);
-
         $login_user = $register->login_user($logindata,$register);
-
-        dd($regis_user);
+        // dd($login_user);
+        // exit;
 
         return $login_user;
-
     }
 
     /**
