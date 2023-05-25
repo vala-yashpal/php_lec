@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::any('/register',[App\Http\Controllers\RegisterController::class, 'store']);
+
+Route::any('/login',[App\Http\Controllers\RegisterController::class, 'log_in']);

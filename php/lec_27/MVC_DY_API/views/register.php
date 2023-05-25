@@ -28,11 +28,13 @@
 
     <!-- Template Stylesheet -->
     <link href="<?php echo $this->base_url;?>css/style.css" rel="stylesheet">
+
     <script>
         if ( window.history.replaceState ) {
             window.history.replaceState( null, null, window.location.href );
         }
     </script>
+    
     <style>
         .error {
             color: red;

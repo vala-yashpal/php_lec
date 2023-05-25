@@ -746,106 +746,144 @@
                 .footer-section .copywrite {
                     margin-left: 20px;
                 }
+                .error {
+                color: red;
+                font-size: 90%;
+                padding-bottom: 5px;
+                padding-left: 10px;
+            }
             }
 
         </style>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     </head>
     <body>
-        <!--
-        MAIN CONTENT STRAT
-                            -->
         <div class="main-contend-section">
             <div class="main-container">
                 <div class="w-50">
                     <div class="logo">
-                        <img src="" alt="Logo">
+                        <img src="https://img.icons8.com/?size=512&id=55497&format=png">
                     </div>
                     <div class="fb-tag-line">
-                        <h3 id="tnk">Facebook helps you connect and share with the people in your life.</h3>
+                        <h3 id="tnk">Laravel Login Api</h3>
                     </div>
                 </div>
                 <div class="w-50">
                     <div class="form-section">
-                        <form action="#" method="POST">
-                            <input type="text" name="email-or-number" id="email-or-number" placeholder="Email address or phone number">
-                            <input type="password" name="password" id="password" placeholder="Password">
+
+                        <form name="rform" id="rform" onsubmit="event.preventDefault();  validateForm()" method="post">
+
+                            <input type="text" name="email" id="email" placeholder="Email">
+                            <div class="error" id="emailErr"></div>
+
+                            <input type="password" name="Password" id="Password" placeholder="Password">
+                            <div class="error" id="passwordErr"></div>
+
                             <input type="submit" name="submit" id="submit" value="Log In">
+
                             <a href="#" target="_self" class="forgot">Forgotten password?</a>
                             <div class="line"></div>
-                            <a href="register.php" target="_self" class="create-new-acc">Create New Account</a>
-                        </form>
-                    </div>
-                   
-                </div>
-            </div>
-        </div>
-        <!--
-            MAIN CONTENT END
-                            -->
 
-        <!--
-            FOOTER CONTENT STRAT
-                                -->
-        <div class="footer-section">
-            <div class="footer-container">
-                <div class="language-section">
-                    <ul>
-                        <li>English (UK)</li>
-                        <li><a href="#" target="_self">বাংলা</a></li>
-                        <li><a href="#" target="_self">অসমীয়া</a></li>
-                        <li><a href="#" target="_self">हिन्दी</a></li>
-                        <li><a href="#" target="_self">Bahasa Indonesia</a></li>
-                        <li><a href="#" target="_self">नेपाली</a></li>
-                        <li><a href="#" target="_self">中文(简体)</a></li>
-                        <li><a href="#" target="_self">العربية</a></li>
-                        <li><a href="#" target="_self">Bahasa Melayu</a></li>
-                        <li><a href="#" target="_self">Español</a></li>
-                        <li><a href="#" target="_self">Português (Brasil)</a></li>
-                        <li><a href="#" target="_self" class="add-more-icon">+</a></li>
-                    </ul>
-                </div>
-                <div class="other-pages-link">
-                    <div class="line"></div>
-                    <ul>
-                        <li><a href="#" target="_self">Sign Up</a></li>
-                        <li><a href="#" target="_self">Log In</a></li>
-                        <li><a href="#" target="_self">Messenger</a></li>
-                        <li><a href="#" target="_self">Facebook Lite </a></li>
-                        <li><a href="#" target="_self">Watch </a></li>
-                        <li><a href="#" target="_self">People</a></li>
-                        <li><a href="#" target="_self">Pages</a></li>
-                        <li><a href="#" target="_self">Page categories</a></li>
-                        <li><a href="#" target="_self">Places</a></li>
-                        <li><a href="#" target="_self">Games</a></li>
-                        <li><a href="#" target="_self">Locations</a></li>
-                        <li><a href="#" target="_self">Marketplace</a></li>
-                        <li><a href="#" target="_self">Facebook Pay</a></li>
-                        <li><a href="#" target="_self">Groups</a></li>
-                        <li><a href="#" target="_self">Jobs</a></li>
-                        <li><a href="#" target="_self">Oculus</a></li>
-                        <li><a href="#" target="_self">Portal</a></li>
-                        <li><a href="#" target="_self">Instagram</a></li>
-                        <li><a href="#" target="_self">Local</a></li>
-                        <li><a href="#" target="_self">Fundraisers</a></li>
-                        <li><a href="#" target="_self">Services</a></li>
-                        <li><a href="#" target="_self">Voting Information Centre</a></li>
-                        <li><a href="#" target="_self">About</a></li>
-                        <li><a href="#" target="_self">Create ad</a></li>
-                        <li><a href="#" target="_self">Create Page</a></li>
-                        <li><a href="#" target="_self">Developers</a></li>
-                        <li><a href="#" target="_self">Careers</a></li>
-                        <li><a href="#" target="_self">Privacy</a></li>
-                        <li><a href="#" target="_self">Cookies</a></li>
-                        <li><a href="#" target="_self">AdChoices<div class="ad-icon"><img src="https://res.cloudinary.com/drgxflcsb/image/upload/v1681242146/facebook%20clone/ad-icon_k9ged1.png" alt="ad-icon"></div></a></li>
-                        <li><a href="#" target="_self">Terms</a></li>
-                        <li><a href="#" target="_self">Help</a></li>
-                    </ul>
-                </div>
-                <div class="copywrite">
-                    <p>Facebook &copy; 2023</p>
+                            <a href="/regis" target="_self" class="create-new-acc">Create New Account</a>
+                        </form>
+                        <script>
+                           
+                                
+                            // Defining a function to display error message
+                            function printError(elemId, hintMsg) {
+                                document.getElementById(elemId).innerHTML = hintMsg;
+                            }
+
+                            // Defining a function to validate form 
+                            function validateForm() {
+                                
+                                // Retrieving the values of form elements 
+                                
+                                var email = document.rform.email.value;
+                                var Password = document.rform.Password.value;
+                                
+                                // Defining error variables with a default value
+                                var  emailErr = passwordErr  = true;
+                            
+
+                                // Validate email address
+                                if(email == "") {
+                                    printError("emailErr", "Please enter your email address");
+                                } else {
+                                    // Regular expression for basic email validation
+                                    var regex = /^\S+@\S+\.\S+$/;
+                                    if(regex.test(email) === false) {
+                                        printError("emailErr", "Please enter a valid email address");
+                                    } else{
+                                        printError("emailErr", "");
+                                        emailErr = false;
+                                    }
+                                }
+                                
+                                // Validate Password
+                                if(Password == "") {
+                                    printError("passwordErr", "Please enter your password");
+                                } else {
+                                    var minNumberofChars = 6;
+                                    var maxNumberofChars = 10;
+                                    
+                                    if(Password.length < minNumberofChars || Password.length > maxNumberofChars){
+                                        printError("passwordErr", "password length minimum 6 and max 10");
+
+                                    }else{
+                                        var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+                                        // var rgepass = strongRegex.test(Password);
+                                        if(strongRegex.test(Password) == false){
+                                            printError("passwordErr", "password should contain atleast one number and one special character");
+                                        }else {
+                                            printError("passwordErr", "");
+                                            passwordErr = false;
+                                    }
+                                    }
+                                }
+
+                                // Prevent the form from being submitted if there are any errors
+
+                                if(( emailErr || passwordErr ) == true) {
+                                    return false;
+                                } else {
+                                    login(); 
+                                }
+                            };
+
+                            function login(){
+                               
+                                var result = {};
+
+                                $.each($('#rform').serializeArray(), function () {
+                                    result[this.name] = this.value;
+                                });
+                                
+                                fetch("http://localhost:8000/api/login",{
+                                method: 'POST',
+                                headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(result)
+                                }).then((response)=>response.json()).then((result)=> {
+                                    console.log(result);
+                                    if(result == 1){
+                                        alert("registration success")
+                                        window.location.href="/log";
+
+                                    }else{
+                                        alert("registration Error")
+                                        window.location.href="/regis";
+                                    }
+                                })
+                            };
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
+        
     
     </body>
 </html>
