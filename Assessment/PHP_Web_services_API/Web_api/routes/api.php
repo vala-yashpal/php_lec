@@ -18,6 +18,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::any('/register',[App\Http\Controllers\RegisterController::class, 'store']);
 
 Route::any('/login',[App\Http\Controllers\RegisterController::class, 'log_in']);
+
+Route::any('/fatch',[App\Http\Controllers\RegisterController::class, 'fatch_user']);
+
+

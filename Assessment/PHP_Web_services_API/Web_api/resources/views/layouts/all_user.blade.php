@@ -202,58 +202,85 @@
   <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.0/css/boxicons.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container">
     <div class="row py-5">
       <div class="col-12">
-        <table id="example" class="table table-hover responsive nowrap" style="width:100%">
-          <thead>
-            <tr>
-              <th>USER ID</th>
-              <th>USER NAME</th>
-              <th>P_Number</th>
-              <th>Profession</th>
-              <th>Date of Birth</th>
-              <th>App Access</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="#">
-                  <div class="d-flex align-items-center">
-                    <div class="avatar avatar-blue mr-3">EB</div>
-                    <!-- <div class=""> -->
-                      <p class="font-weight-bold mb-0">ethan-black@example.com</p>
-                    <!-- </div> -->
-                  </div>
-                </a>
-              </td>
-              <td><p class="font-weight-bold mt-3">Ethan Black</p></td>
-              <td><p class="font-weight-bold mt-3">996338522</p></td>
-              <td><p class="font-weight-bold mt-3">Designer</p></td>
-              <td><p class="font-weight-bold mt-3">09/04/1996</p></td>
-              <td>
-                <div class="badge badge-success badge-success-alt mt-3">Enabled</div>
-              </td>
-              <td>
-                <div class="dropdown">
-                  <button class="btn btn-sm btn-icon" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="bx bx-dots-horizontal-rounded" data-toggle="tooltip" data-placement="top"
-                          title="Actions"></i>
-                      </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                    <a class="dropdown-item" href="#"><i class="bx bxs-pencil mr-2"></i> Edit Profile</a>
-                    <a class="dropdown-item text-danger" href="#"><i class="bx bxs-trash mr-2"></i> Remove</a>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        
+          <table id="example" class="table table-hover responsive nowrap" style="width:100%">
+            <thead>
+              <tr>
+                <th>USER ID</th>
+                <th>USER NAME</th>
+                <th>P_Number</th>
+                <th>Profession</th>
+                <th>Date of Birth</th>
+                <th>App Access</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="data">
+              
+            </tbody>
+          </table>
+        
+        <script>
 
+          $(document).ready(function(){
+            getprodutcs();
+          });
+
+          function getprodutcs(){
+            fetch("http://localhost:8000/api/fatch").then((returndata)=> returndata.json()).then((response)=>{
+
+              // console.log(response);
+              // return false;
+              htmltable = ""
+              response.forEach(element =>{
+                  // console.log(element.email);
+                  // return false;
+                  htmltable+=`
+                  <tr>
+                    <td>
+                      <a href="#">
+                        <div class="d-flex align-items-center">
+                          <div class="avatar avatar-blue mr-3">EB</div>
+                          <!-- <div class=""> -->
+                            <p class="font-weight-bold mb-0">${element.email}</p>
+                            <!-- </div> -->
+                          </div>
+                        </a>
+                      </td>
+                    <td><p class="font-weight-bold mt-3">${element.user_name}</p></td>
+                    <td><p class="font-weight-bold mt-3">996338522</p></td>
+                    <td><p class="font-weight-bold mt-3">Designer</p></td>
+                    <td><p class="font-weight-bold mt-3">09/04/1996</p></td>
+                    <td>
+                      <div class="badge badge-success badge-success-alt mt-3">Enabled</div>
+                    </td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-icon" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="bx bx-dots-horizontal-rounded" data-toggle="tooltip" data-placement="top"
+                                title="Actions"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                              <a class="dropdown-item" href="#"><i class="bx bxs-pencil mr-2"></i> Edit Profile</a>
+                              <a class="dropdown-item text-danger" href="#"><i class="bx bxs-trash mr-2"></i> Remove</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>`
+              });
+              // console.log(htmltable);
+              document.getElementById("data").innerHTML = htmltable;
+            })
+          }
+          // window.onload = getprodutcs;
+
+        </script>
         <script>
             $(document).ready(function() {
               $("#example").DataTable({
@@ -291,5 +318,6 @@
       </div>
     </div>
   </div>
+
 </body>
 </html>

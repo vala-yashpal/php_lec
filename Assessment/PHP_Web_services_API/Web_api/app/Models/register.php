@@ -54,6 +54,5 @@ class register extends Model
         // echo"</pre>";
         // exit;
     }
-
 }
 

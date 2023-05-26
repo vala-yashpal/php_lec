@@ -59,6 +59,22 @@ class RegisterController extends Controller
         return $login_user;
     }
 
+
+    public function fatch_user(register $register)
+    {
+        $alluserdata = $register->all();
+        
+        // dd($alluserdata);
+
+        // echo "<pre>";
+        // print_r($alluserdata);
+        // echo "</pre>";
+        // exit;
+
+        return $alluserdata;
+    }
+
+
     /**
      * Display the specified resource.
      */
