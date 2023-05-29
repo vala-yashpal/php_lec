@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" id="register_from" onSubmit="register_from()">
         @csrf
 
         <!-- Name -->
@@ -50,3 +50,32 @@
         </div>
     </form>
 </x-guest-layout>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+function register_from(){
+    $.ajaxSetup({
+        headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    }),
+
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:8000/api/register",
+      data : $('#register_from').serialize(),
+      dataType: "json",
+      encode: true,
+    }).done(function (data) {
+    //   console.log(data);
+    //   return false;
+
+      if(data.stetus==="success"){
+        window.location.href="/login";
+      }
+
+      
+    });
+
+    event.preventDefault();
+  };
+    </script>

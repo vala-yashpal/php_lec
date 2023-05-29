@@ -2,7 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" id="login_from" onSubmit="login_from()">
         @csrf
 
         <!-- Email Address -->
@@ -45,3 +45,35 @@
         </div>
     </form>
 </x-guest-layout>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+function login_from(){
+    // console.log("called");
+    $.ajaxSetup({
+        headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    }),
+
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:8000/api/login",
+      data : $('#login_from').serialize(),
+      dataType: "json",
+      encode: true,
+    }).done(function (data) {
+
+      console.log(data);
+      return false;
+
+      if(data.stetus==="success"){
+        // alert("log_in");
+        localStorage.setItem("token", data.authorization.token);
+        window.location.href="/dashboard";
+        // console.log("login");
+        // return false;
+      }
+    });
+    event.preventDefault();
+  };
+</script>

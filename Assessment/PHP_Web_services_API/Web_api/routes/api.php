@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::any('/register',[App\Http\Controllers\RegisterController::class, 'store']);
+// Route::any('/register',[App\Http\Controllers\RegisterController::class, 'store']);
+// Route::any('/login',[App\Http\Controllers\RegisterController::class, 'log_in']);
+// Route::any('/fatch',[App\Http\Controllers\RegisterController::class, 'fatch_user']);
 
-Route::any('/login',[App\Http\Controllers\RegisterController::class, 'log_in']);
 
-Route::any('/fatch',[App\Http\Controllers\RegisterController::class, 'fatch_user']);
+Route::controller(AuthController::class)->group(function () {
+    Route::post('login', 'login');
+    Route::post('register', 'register');
+    Route::post('logout', 'logout');
+    Route::post('refresh', 'refresh');
+});
 
 
