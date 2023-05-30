@@ -47,6 +47,7 @@
 </x-guest-layout>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
+    
 function login_from(){
     // console.log("called");
     $.ajaxSetup({
@@ -64,10 +65,10 @@ function login_from(){
     }).done(function (data) {
 
       console.log(data);
-      return false;
+    //   return false;
 
       if(data.stetus==="success"){
-        // alert("log_in");
+        alert("log_in");
         localStorage.setItem("token", data.authorization.token);
         window.location.href="/dashboard";
         // console.log("login");
