@@ -63,16 +63,15 @@ function login_from(){
       dataType: "json",
       encode: true,
     }).done(function (data) {
-
-      console.log(data);
+        // console.log(data);
     //   return false;
 
       if(data.stetus==="success"){
-        alert("log_in");
-        localStorage.setItem("token", data.authorization.token);
-        window.location.href="/dashboard";
-        // console.log("login");
+        alert("success");
+        // console.log(data);
         // return false;
+        localStorage.setItem("token", data.authorization.token);
+        window.location.href="/log";
       }
     });
     event.preventDefault();

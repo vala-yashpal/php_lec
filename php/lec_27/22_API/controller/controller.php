@@ -33,7 +33,6 @@
                 switch ($_SERVER["PATH_INFO"]){
 
                     case '/home':
-    
                         echo "<h2>welcome to our api success</h2>";
                     break;
 

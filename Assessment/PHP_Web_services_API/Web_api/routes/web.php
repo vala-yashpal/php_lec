@@ -18,7 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function (){
+    //  echo "called";   
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -35,7 +36,7 @@ Route::middleware('auth')->group(function () {
 //     return view('login');
 // });
 
-// Route::view('/log','login');
+Route::view('/log','login');
 // Route::view('/regis','register');
 // Route::view('/list_alluser','alluser');
 
