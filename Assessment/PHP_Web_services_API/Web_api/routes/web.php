@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
 // });
 
 Route::view('/log','login');
-// Route::view('/regis','register');
-// Route::view('/list_alluser','alluser');
+Route::view('/regis','register');
+Route::view('/list_alluser','alluser');
 
 require __DIR__.'/auth.php';
