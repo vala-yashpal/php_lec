@@ -195,7 +195,7 @@
 
                         // console.log(result);
 
-                        fetch("http://localhost/php_lec_tops/php/lec_27/22_API/login",{
+                        fetch("http://localhost/php_lec/php/lec_27/22_API/login",{
                         method: 'POST',
                         headers: {
                         'Accept': 'application/json',
@@ -208,7 +208,7 @@
 
                                 //sesssion set api
 
-                                fetch("http://localhost/php_lec_tops/php/lec_27/MVC_DY_API/session",{
+                                fetch("http://localhost/php_lec/php/lec_27/MVC_DY_API/session",{
                                 method: 'POST',
                                 headers: {
                                 'Accept': 'application/json',
@@ -222,10 +222,7 @@
                                     }else{
                                         alert("try agin");
                                     }
-                                    
                                 })
-                              
-
                                 if(result['Data'][0] != ""){
                                     
                                     if(result['Data'][0]['id'] == 1){

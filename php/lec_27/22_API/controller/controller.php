@@ -37,17 +37,25 @@
                     break;
 
                     case '/register':
+                        $data = json_decode(file_get_contents('php://input') );
+                        $array = (array) $data;
+                        
+                        $ragister_user = $this->insert("register",$array);
+                        echo json_encode($ragister_user);
+                    break;
+
+                    
+                    case '/login':
 
                         $data = json_decode(file_get_contents('php://input') );
                         $array = (array) $data;
 
-                        $ragister_user = $this->insert("register",$array);
-
-                        echo json_encode($ragister_user);
+                        $result = $this->login($array['user_n_m_e'],$array['password']);
+                
+                        echo json_encode($result);
                     break;
 
                     case '/resetpassword':
-
                         $data = json_decode(file_get_contents('php://input') );
                         $array = (array) $data;
                         $email = $array['email'];
@@ -76,15 +84,6 @@
                         echo json_encode($update_pass);
                     break;
 
-                    case '/login':
-
-                        $data = json_decode(file_get_contents('php://input') );
-                        $array = (array) $data;
-
-                        $result = $this->login($array['user_n_m_e'],$array['password']);
-                
-                        echo json_encode($result);
-                    break;
 
                     case '/uploadimg':
                         if ($this->method == 'POST') {

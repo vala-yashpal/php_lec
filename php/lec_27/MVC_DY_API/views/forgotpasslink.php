@@ -217,7 +217,7 @@
                     result[this.name] = this.value;
                 });
 
-                fetch("http://localhost/php_lec_tops/php/lec_27/22_API/updatepassword?id="+id,{
+                fetch("http://localhost/php_lec/php/lec_27/22_API/updatepassword?id="+id,{
                 method: 'POST',
                 headers: {
                 'Accept': 'application/json',
