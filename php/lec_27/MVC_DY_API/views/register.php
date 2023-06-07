@@ -315,7 +315,7 @@
 
                     // console.log(result);
 
-                    fetch("http://localhost/php_lec/php/lec_27/22_API/register",{
+                    fetch("http://localhost/php_lec_tops/php/lec_27/22_API/register",{
                     method: 'POST',
                     headers: {
                     'Accept': 'application/json',

@@ -26,7 +26,7 @@
             // alert(form_data);
             console.log(form_data);
             $.ajax({
-                url: 'http://localhost/php_lec/php/lec_27/22_API/uploadimg', // <-- point to server-side PHP script 
+                url: 'http://localhost/php_lec_tops/php/lec_27/22_API/uploadimg', // <-- point to server-side PHP script 
                 dataType: 'text', // <-- what to expect back from the PHP script, if anything
                 contentType: false,
                 processData: false,
@@ -37,7 +37,7 @@
                     let ResposeJson = JSON.parse(php_script_response);
                     
                     console.log(ResposeJson.Data.filename);
-                    $('#preview').attr('src', "http://localhost/php_lec/php/lec_27/22_API/uploads/"+ResposeJson.Data.filename);
+                    $('#preview').attr('src', "http://localhost/php_lec_tops/php/lec_27/22_API/uploads/"+ResposeJson.Data.filename);
                 }
             });
         });
