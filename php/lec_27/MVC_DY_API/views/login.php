@@ -144,13 +144,11 @@
                     </div>
                 </form>
 
-                <script>
-                    
+                <script> 
                     // Defining a function to display error message
                     function printError(elemId, hintMsg) {
                         document.getElementById(elemId).innerHTML = hintMsg;
                     }
-                    
 
                     function loginvalid(){
                         // Retrieving the values of form elements 
@@ -203,38 +201,37 @@
                         },
                         body: JSON.stringify(result)
                         }).then((response)=>response.json()).then((result)=> {
-    
+                            
+                            // console.log(result['Data']);
+                            // return false;
+
                             if(result['Code'] == 1){
-
                                 //sesssion set api
-
                                 fetch("http://localhost/php_lec_tops/php/lec_27/MVC_DY_API/session",{
-                                method: 'POST',
-                                headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify(result['Data'])
+                                    method: 'POST',
+                                    headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(result['Data'])
                                 }).then((response)=>response.json()).then((sessionresult)=> {
-                                    
+                                // console.log(sessionresult);
+                                // return false;
                                     if(sessionresult == "true"){
-                                        alert("welcome");
-                                    }else{
-                                        alert("try agin");
+                                        if(result['Data'][0] != ""){
+                                            if(result['Data'][0]['id'] == 1){
+                                                    alert("welcome_"+result['Data'][0]['user_name']);
+                                                window.location.href="admindashboard"
+                                            }else{
+                                                alert("welcome_"+result['Data'][0]['user_name']);
+                                                window.location.href="home"   
+                                            } 
+                                        }
                                     }
                                 })
-                                if(result['Data'][0] != ""){
-                                    
-                                    if(result['Data'][0]['id'] == 1){
-                                        window.location.href="admindashboard"
-                                    }else{
-                                        window.location.href="home"
-                                    }
-                                }else{
-                                    window.location.href="login"
-                                }
                             }else{
                                 alert("Invalid User");
+                                window.location.href="login"
                             } 
                         })
                     };

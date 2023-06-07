@@ -7,7 +7,7 @@
             // print_r($_SERVER);
 
             $RequestUriData = explode("/",$_SERVER['REQUEST_URI']);
-            $this->base_url .= $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME']."/".$RequestUriData[1]."/".$RequestUriData[2]."/".$RequestUriData[3]."/assets";
+            $this->base_url .= $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME']."/".$RequestUriData[1]."/".$RequestUriData[2]."/".$RequestUriData[3]."/".$RequestUriData[4]."/assets";
             
             // echo "<br>static  base url :http://localhost/php_lec_tops/Assessment/fruit_project/assets<br>";
             // echo "dynamic base url :". $this->base_url;

@@ -55,6 +55,28 @@
                         echo json_encode($result);
                     break;
 
+                    // case '/session':
+                    //     $user_data = json_decode(file_get_contents('php://input'));
+                    //     $user = $user_data['0'];
+
+                    //     // echo "<pre>";
+                    //     // print_r($user);
+                    //     // echo "</pre>";
+                    //     // exit;
+
+                    //     $_SESSION['userdata'] = $user;
+                    //     // echo "<pre>";
+                    //     // print_r($_SESSION['userdata']->user_name);
+                    //     // echo "</pre>";
+                    //     // exit;
+
+                    //     if(isset($_SESSION['userdata'])){
+                    //         echo json_encode("true");
+                    //     }else{
+                    //         echo json_encode("false");
+                    //     }
+                    // break;
+
                     case '/resetpassword':
                         $data = json_decode(file_get_contents('php://input') );
                         $array = (array) $data;
