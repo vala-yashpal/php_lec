@@ -1,0 +1,12 @@
+
+error_message >> Column count doesn't match value count at row 1
+error_datetime >> 19-Mar-2023 10:14:03 AM
+>>===============================================<<
+
+error_message >> Column count doesn't match value count at row 1
+error_datetime >> 19-Mar-2023 19:15:58 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+error_datetime >> 19-Mar-2023 19:36:15 PM
+>>===============================================<<

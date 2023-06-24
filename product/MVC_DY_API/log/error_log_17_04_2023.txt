@@ -1,0 +1,72 @@
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:35 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:36 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:39 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:40 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:40 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:40 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:41 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:41 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:41 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:41 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:41 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:42 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:42 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:42 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:43 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:43 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:43 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 17-Apr-2023 13:00:43 PM
+>>===============================================<<

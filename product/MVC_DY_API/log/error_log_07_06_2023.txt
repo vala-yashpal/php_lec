@@ -1,0 +1,12 @@
+
+error_message >> Unknown column 'prof_img' in 'field list'
+error_datetime >> 07-Jun-2023 11:00:46 AM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 07-Jun-2023 14:53:53 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 's new variant which goes beyond Galaxy to the Universe' WHERE  item_id = '3'' at line 1
+error_datetime >> 07-Jun-2023 14:53:55 PM
+>>===============================================<<

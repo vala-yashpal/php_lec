@@ -1,0 +1,24 @@
+
+error_message >> Unknown column 'id' in 'where clause'
+error_datetime >> 26-Feb-2023 11:57:51 AM
+>>===============================================<<
+
+error_message >> Unknown column 'id' in 'where clause'
+error_datetime >> 26-Feb-2023 11:58:48 AM
+>>===============================================<<
+
+error_message >> Unknown column 'item_img' in 'field list'
+error_datetime >> 26-Feb-2023 15:20:19 PM
+>>===============================================<<
+
+error_message >> Unknown column 'item_img' in 'field list'
+error_datetime >> 26-Feb-2023 15:20:23 PM
+>>===============================================<<
+
+error_message >> Duplicate entry '0' for key 'PRIMARY'
+error_datetime >> 26-Feb-2023 15:22:00 PM
+>>===============================================<<
+
+error_message >> Duplicate entry '0' for key 'PRIMARY'
+error_datetime >> 26-Feb-2023 15:26:42 PM
+>>===============================================<<

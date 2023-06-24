@@ -1,0 +1,80 @@
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+error_datetime >> 03-Apr-2023 16:10:08 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+error_datetime >> 03-Apr-2023 16:10:09 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+error_datetime >> 03-Apr-2023 16:10:09 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+error_datetime >> 03-Apr-2023 16:10:54 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+error_datetime >> 03-Apr-2023 16:10:55 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+error_datetime >> 03-Apr-2023 16:10:55 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+error_datetime >> 03-Apr-2023 16:10:55 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+error_datetime >> 03-Apr-2023 16:10:55 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+error_datetime >> 03-Apr-2023 16:10:55 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+error_datetime >> 03-Apr-2023 16:13:36 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-4 , 4' at line 1
+error_datetime >> 03-Apr-2023 16:32:31 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-4 , 4' at line 1
+error_datetime >> 03-Apr-2023 16:33:15 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-4 , 4' at line 1
+error_datetime >> 03-Apr-2023 16:33:19 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-4 , 4' at line 1
+error_datetime >> 03-Apr-2023 16:33:34 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-4 , 4' at line 1
+error_datetime >> 03-Apr-2023 16:33:35 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-4 , 4' at line 1
+error_datetime >> 03-Apr-2023 16:33:35 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-4 , 4' at line 1
+error_datetime >> 03-Apr-2023 16:33:36 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-4 , 4' at line 1
+error_datetime >> 03-Apr-2023 16:41:37 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-4 , 4' at line 1
+error_datetime >> 03-Apr-2023 16:41:38 PM
+>>===============================================<<
+
+error_message >> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-4 , 4' at line 1
+error_datetime >> 03-Apr-2023 16:41:39 PM
+>>===============================================<<

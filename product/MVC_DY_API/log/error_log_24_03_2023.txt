@@ -1,0 +1,4 @@
+
+error_message >> Unknown column 'prof_img' in 'field list'
+error_datetime >> 24-Mar-2023 16:52:00 PM
+>>===============================================<<
